@@ -1,13 +1,10 @@
-# Byte-compiled / optimized / DLL files
+﻿# Python
 __pycache__/
 *.py[cod]
-*$py.class
-
-# C extensions
+*.class
 *.so
-
-# Distribution / packaging
 .Python
+env/
 build/
 develop-eggs/
 dist/
@@ -19,166 +16,28 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a CI server in a temporary directory -
-#  but if a user creates them locally generally they should not be committed.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# PEP 582; used by PDM, PEP 582 shim
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
+# Virtual Environment
 venv/
 ENV/
-env.bak/
-venv.bak/
+env/
 
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
-
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-
-# PyCharm
+# IDE
 .idea/
-*.iml
+.vscode/
+*.swp
+*.swo
 
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Poetry
-poetry.lock # Usually committed, but can be ignored if preferred by team workflow.
-            # For library development, commit it. For applications, commit it.
-            # If you are generating it on each CI run freshly, you might ignore.
-            # Let's assume for now we commit it (so it's NOT in .gitignore)
-
-# Docker
-docker-compose.override.yml
-.dockerignore # This file itself should be versioned
+# Local configuration
+.env
 
 # Logs
-logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+logs/
 
-# Local configuration files that should not be committed
-config/local_settings.yaml
-config/.env
-
-# Output files
-output/
-results/
-
-# Temp files
-*.tmp
-*~
+# Cache
+.cache/
+.pytest_cache/

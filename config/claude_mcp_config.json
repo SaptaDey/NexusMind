@@ -1,6 +1,6 @@
 {
-  "name": "ASR-GoT Reimagined MCP Integration",
-  "description": "Integrates Claude with the ASR-GoT Reimagined server for advanced scientific reasoning.",
+  "name": "NexusMind MCP Integration",
+  "description": "Integrates Claude with the NexusMind server for advanced scientific reasoning.",
   "version": "0.1.0",
   "type": "mcp",
   "icon": "🔬",

@@ -78,7 +78,7 @@ async def handle_asr_got_query(
         return create_jsonrpc_error(
             request_id=request_id,
             code=-32002,
-            message="ASR-GoT Core Processor is not available.",
+            message="NexusMind Core Processor is not available.",
         )
 
     try:

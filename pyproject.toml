@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "asr-got-reimagined"
+name = "nexusmind"
 version = "0.1.0"
-description = "Reimagined Advanced Scientific Reasoning Graph-of-Thoughts (ASR-GoT) MCP Server"
-authors = ["ASR-GoT Development Team <support@asrgot.org>"] 
+description = "NexusMind: Intelligent Scientific Reasoning through Graph-of-Thoughts MCP Server"
+authors = ["NexusMind Development Team <support@nexusmind.org>"] 
 readme = "README.md"
 license = "Apache-2.0"
-repository = "https://github.com/asr-got/asr-got-reimagined"
-homepage = "https://github.com/asr-got/asr-got-reimagined"
-keywords = ["asr", "got", "graph-of-thoughts", "mcp", "ai", "reasoning", "scientific-computing"]
+repository = "https://github.com/nexusmind/nexusmind"
+homepage = "https://github.com/nexusmind/nexusmind"
+keywords = ["nexusmind", "got", "graph-of-thoughts", "mcp", "ai", "reasoning", "scientific-computing"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",

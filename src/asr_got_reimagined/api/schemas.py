@@ -92,7 +92,7 @@ class MCPInitializeParams(BaseModel):
 
 class MCPInitializeResult(BaseModel):
     server_name: str = Field(
-        default="ASR-GoT-Reimagined-MCP", description="Name of the MCP server"
+        default="NexusMind-MCP", description="Name of the MCP server"
     )
     server_version: str = Field(
         default="0.1.0", description="Version of the MCP server"
@@ -180,7 +180,7 @@ class GoTQueryInput(BaseModel):
     )
     config_override: Optional[Dict[str, Any]] = Field(
         default=None,
-        description="Optional overrides for ASR-GoT parameters for this query",
+        description="Optional overrides for NexusMind parameters for this query",
     )
     session_id: Optional[str] = Field(
         default=None, description="Optional session ID to continue or manage a session"

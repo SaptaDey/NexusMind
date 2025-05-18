@@ -7,7 +7,7 @@ from asr_got_reimagined.config import settings
 app = create_app()
 
 if __name__ == "__main__":
-    logger.info("Starting ASR-GoT Reimagined server using Uvicorn...")
+    logger.info("Starting NexusMind server using Uvicorn...")
     logger.info(
         "Host: {}, Port: {}, Log Level: {}",
         settings.app.host,

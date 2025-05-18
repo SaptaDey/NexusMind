@@ -50,13 +50,11 @@ def create_app() -> FastAPI:
         "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>",
         colorize=True,
     )
-    logger.info("Logger configured with level: {}", settings.app.log_level.upper())
-
-    # Create FastAPI app with lifespan
+    logger.info("Logger configured with level: {}", settings.app.log_level.upper())    # Create FastAPI app with lifespan
     app = FastAPI(
         title=settings.app.name,
         version=settings.app.version,
-        description="ASR-GoT Reimagined: Advanced Scientific Reasoning Graph-of-Thoughts MCP Server",
+        description="NexusMind: Intelligent Scientific Reasoning through Graph-of-Thoughts MCP Server",
         openapi_url="/api/openapi.json",
         docs_url="/api/docs",
         redoc_url="/api/redoc",

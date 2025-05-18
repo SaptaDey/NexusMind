@@ -13,7 +13,7 @@ if config_file_path.exists():
         yaml_config = yaml.safe_load(f)
 
 
-# --- Models for ASR-GoT Default Parameters ---
+# --- Models for NexusMind Default Parameters ---
 class HypothesisParams(BaseModel):
     min_hypotheses: int = Field(default=2, alias="min")
     max_hypotheses: int = Field(default=4, alias="max")
@@ -58,7 +58,7 @@ class ASRGoTConfig(BaseModel):
 # --- Models for MCP Settings ---
 class MCPSettings(BaseModel):
     protocol_version: str = Field(default="2024-11-05")
-    server_name: str = Field(default="ASR-GoT Reimagined MCP Server")
+    server_name: str = Field(default="NexusMind MCP Server")
     server_version: str = Field(default="0.1.0")
     vendor_name: str = Field(default="AI Research Group")
     # display_name: Optional[str] = None
@@ -83,7 +83,7 @@ class KnowledgeDomain(BaseModel):
 
 # --- Main Application Settings Model ---
 class AppSettings(BaseModel):
-    name: str = Field(default="ASR-GoT Reimagined")
+    name: str = Field(default="NexusMind")
     version: str = Field(default="0.1.0")
     host: str = Field(default="0.0.0.0")
     port: int = Field(default=8000)

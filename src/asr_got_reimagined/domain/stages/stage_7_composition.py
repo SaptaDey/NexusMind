@@ -1,3 +1,4 @@
+
 import random
 from typing import Dict, List, Optional, Tuple, Union
 
@@ -105,7 +106,7 @@ class CompositionStage(BaseStage):
 
         # P1.6: Vancouver citations (K1.3)
         # Simplified citation generation
-        citation_text = f"ASR-GoT Internal Node. ID: {node.id}. Label: {node.label}. Type: {node.type.value}. Created: {node.created_at.strftime('%Y-%m-%d')}."
+        citation_text = f"NexusMind Internal Node. ID: {node.id}. Label: {node.label}. Type: {node.type.value}. Created: {node.created_at.strftime('%Y-%m-%d')}."
         citation = CitationItem(
             id=f"Node-{node.id}", text=citation_text, source_node_id=node.id
         )
@@ -219,7 +220,7 @@ class CompositionStage(BaseStage):
                 "No subgraphs found from SubgraphExtractionStage. Composition will be minimal."
             )
             composed_output_obj = ComposedOutput(
-                title=f"ASR-GoT Analysis (Minimal): {initial_query[:50]}...",
+                title=f"NexusMind Analysis (Minimal): {initial_query[:50]}...",
                 executive_summary="No specific subgraphs were extracted for detailed composition. The graph may be too sparse or criteria too strict.",
                 sections=[],
                 citations=[],
@@ -256,8 +257,9 @@ class CompositionStage(BaseStage):
         # Deduplicate citations by id (simplified)
         final_citations_map: Dict[str, CitationItem] = {}
         for cit in all_citations:
-            if cit.id not in final_citations_map:
-                final_citations_map[cit.id] = cit
+            key = str(cit.id)
+            if key not in final_citations_map:
+                final_citations_map[key] = cit
         final_citations = list(final_citations_map.values())
         # Re-number citations if they were sequentially numbered (more complex, skipped for now)
 
@@ -268,7 +270,7 @@ class CompositionStage(BaseStage):
 
         # P1.6: Output formatting
         composed_output_obj = ComposedOutput(
-            title=f"ASR-GoT Analysis: {initial_query[:50]}...",
+            title=f"NexusMind Analysis: {initial_query[:50]}...",
             executive_summary=exec_summary,
             sections=output_sections,
             citations=final_citations,

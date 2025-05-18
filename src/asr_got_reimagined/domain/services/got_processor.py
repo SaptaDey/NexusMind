@@ -91,7 +91,7 @@ class GoTProcessor:
         from asr_got_reimagined.domain.stages import CompositionStage, ReflectionStage
 
         start_total_time = time.time()
-        logger.info(f"Starting ASR-GoT query processing for: '{query[:100]}...'")
+        logger.info(f"Starting NexusMind query processing for: '{query[:100]}...'")
 
         # Initialize or retrieve session data
         current_session_data = GoTProcessorSessionData(
@@ -195,7 +195,7 @@ class GoTProcessor:
 
         total_execution_time_ms = int((time.time() - start_total_time) * 1000)
         logger.info(
-            f"ASR-GoT query processing completed for session {current_session_data.session_id} in {total_execution_time_ms}ms."
+            f"NexusMind query processing completed for session {current_session_data.session_id} in {total_execution_time_ms}ms."
         )
 
         return current_session_data

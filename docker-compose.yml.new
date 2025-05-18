@@ -1,12 +1,11 @@
-# Docker Compose configuration for ASR-GoT Reimagined
+# Docker Compose configuration for NexusMind
 
 services:
-  # Backend API service for ASR-GoT
-  asr-got-api:
-    build:
+  # Backend API service for NexusMind
+  asr-got-api:    build:
       context: . # Use the Dockerfile in the current directory
       dockerfile: Dockerfile
-    container_name: asr-got-reimagined-api
+    container_name: nexusmind-api
     restart: unless-stopped
     ports:
       - "${APP_PORT:-8000}:8000" # Expose port 8000 from container, configurable via .env
@@ -36,11 +35,10 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 30s # Give more time for the app to start, especially with --reload
-    networks:
-      - asr_got_network
+      start_period: 30s # Give more time for the app to start, especially with --reload    networks:
+      - nexusmind_network
 
 networks:
-  asr_got_network:
+  nexusmind_network:
     driver: bridge
     name: asr_got_reimagined_network
