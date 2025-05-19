@@ -33,6 +33,7 @@ python-dotenv = "^1.0.1"   # For loading .env files
 PyYAML = "^6.0.1"          # For YAML configuration files
 typer = {extras = ["all"], version = "^0.12.3"} # For CLI commands (optional, but good for management scripts)
 loguru = "^0.7.2"          # For enhanced logging
+requests = "^2.31.0"       # For HTTP requests in test scripts
 
 # Optional for graph visualization utils later, uncomment if needed
 # matplotlib = "^3.8.0"
