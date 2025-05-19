@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/SaptaDey/ASR-GoT-Reimagined/main/static/asr-got-logo.png" width="180" height="180" alt="NexusMind Logo"/>
+<img src="https://raw.githubusercontent.com/SaptaDey/NexusMind/main/static/asr-got-logo.png" width="180" height="180" alt="NexusMind Logo"/>
 
 #### **Intelligent Scientific Reasoning through Graph-of-Thoughts**
 
@@ -136,32 +136,32 @@ The core reasoning process follows a sophisticated 8-stage pipeline:
 
 ```
 asr-got-reimagined/
-├── config/                        # Configuration files
-│   ├── settings.yaml              # App settings
-│   └── claude_mcp_config.json     # MCP configuration
-├── src/asr_got_reimagined/        # Main package
-│   ├── api/                       # API layer
-│   │   ├── routes/                # API endpoints
-│   │   │   └── mcp.py             # MCP protocol handlers
-│   │   └── schemas.py             # Request/response schemas
-│   ├── domain/                    # Core business logic
-│   │   ├── models/                # Domain data models
-│   │   │   ├── common.py          # Shared models
-│   │   │   ├── graph_elements.py  # Node/edge definitions
-│   │   │   └── graph_state.py     # Graph representation
-│   │   ├── services/              # Core services
-│   │   │   └── got_processor.py   # Main processor
-│   │   ├── stages/                # Pipeline stages
-│   │   │   ├── base_stage.py      # Abstract base
-│   │   │   ├── stage_1_*.py       # Initialization
-│   │   │   └── stage_2_*.py...    # Other stages
-│   │   └── utils/                 # Utility functions
-│   ├── main.py                    # App entry point
-│   └── app_setup.py               # App configuration
-├── scripts/                       # Developer utilities
-├── Dockerfile                     # Docker configuration
-├── docker-compose.yml             # Container orchestration
-└── pyproject.toml                 # Project metadata
+├── config/                        
+│   ├── settings.yaml              
+│   └── claude_mcp_config.json     
+├── src/asr_got_reimagined/        
+│   ├── api/                       
+│   │   ├── routes/                
+│   │   │   └── mcp.py             
+│   │   └── schemas.py             
+│   ├── domain/                    
+│   │   ├── models/                
+│   │   │   ├── common.py          
+│   │   │   ├── graph_elements.py  
+│   │   │   └── graph_state.py     
+│   │   ├── services/              
+│   │   │   └── got_processor.py   
+│   │   ├── stages/                
+│   │   │   ├── base_stage.py      
+│   │   │   ├── stage_1_*.py       
+│   │   │   └── stage_2_*.py...    
+│   │   └── utils/                 
+│   ├── main.py                    
+│   └── app_setup.py               
+├── scripts/                       
+├── Dockerfile                     
+├── docker-compose.yml             
+└── pyproject.toml                 
 ```
 
 ## 🚀 Getting Started
@@ -176,7 +176,7 @@ asr-got-reimagined/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/SaptaDey/ASR-GoT-Reimagined.git
+   git clone https://github.com/SaptaDey/NexusMind.git
    cd asr-got-reimagined
    ```
 
@@ -285,8 +285,4 @@ asr-got-reimagined/
 - **Code Quality**:
   - Fully typed codebase with type annotations
   - Pre-commit hooks available: `poetry run pre-commit install`
-  - Automated formatting with Ruff#   A S R - G o T - R e i m a g i n e d 
- 
- #   N e x u s M i n d 
- 
- 
+  - Automated formatting with Ruff

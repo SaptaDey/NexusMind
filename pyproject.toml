@@ -79,3 +79,6 @@ pythonpath = ["src"] # Add src to pythonpath for tests
 asyncio_mode = "auto"
 # Add more options as needed, e.g., test file patterns
 # python_files = "tests.py test_*.py *_tests.py"
+
+[tool.poetry.packages]
+include = ["src/nexusmind"]
