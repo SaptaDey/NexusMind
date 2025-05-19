@@ -287,5 +287,6 @@ asr-got-reimagined/
   - Pre-commit hooks available: `poetry run pre-commit install`
   - Automated formatting with Ruff#   A S R - G o T - R e i m a g i n e d 
  
- #   N e x u s M i n d  
+ #   N e x u s M i n d 
+ 
  
