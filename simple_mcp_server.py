@@ -40,19 +40,31 @@ async def mcp_handler(request: Request):
                 "jsonrpc": "2.0",
                 "id": req_id,
                 "result": {
-                    "server_name": "Simple NexusMind MCP Server",
+                    "server_name": "NexusMind MCP Server",
                     "server_version": "0.1.0",
                     "mcp_version": "2024-11-05"
                 }
             }
         elif method == "asr_got.query":
             query = params.get("query", "No query provided")
+            # Simulate detailed response with reasoning traces and graph states
+            reasoning_trace_summary = "Reasoning trace: Step 1 -> Step 2 -> Step 3"
+            graph_state_full = {
+                "nodes": [
+                    {"id": "n1", "label": "Node 1", "type": "root"},
+                    {"id": "n2", "label": "Node 2", "type": "evidence"}
+                ],
+                "edges": [
+                    {"id": "e1", "source": "n1", "target": "n2", "type": "supports"}
+                ]
+            }
             return {
                 "jsonrpc": "2.0",
                 "id": req_id,
                 "result": {
                     "answer": f"NexusMind processed your query: {query}",
-                    "reasoning_trace_summary": "This is a sample reasoning trace from the Graph-of-Thoughts process.",
+                    "reasoning_trace_summary": reasoning_trace_summary,
+                    "graph_state_full": graph_state_full,
                     "confidence_vector": [0.85, 0.92, 0.78, 0.89],
                     "execution_time_ms": 1250,
                     "session_id": "sample-session-123"
@@ -88,5 +100,5 @@ async def health_check():
     return {"status": "healthy", "version": "0.1.0"}
 
 if __name__ == "__main__":
-    print("Starting Simple NexusMind MCP Server...")
+    print("Starting NexusMind MCP Server...")
     uvicorn.run(app, host="0.0.0.0", port=8000)

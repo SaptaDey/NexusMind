@@ -37,6 +37,15 @@ def test_initialize_endpoint() -> Dict[str, Any]:
         if response.status_code == 200:
             result = response.json()
             print(f"Success! Response: {json.dumps(result, indent=2)}")
+            
+            # Add assertions to verify the correctness of the initialize endpoint response
+            assert result["jsonrpc"] == "2.0", "Invalid JSON-RPC version"
+            assert result["id"] == "test-init-1", "Invalid response ID"
+            assert "result" in result, "Missing result in response"
+            assert result["result"]["server_name"] == "NexusMind MCP Server", "Invalid server name"
+            assert result["result"]["server_version"] == "0.1.0", "Invalid server version"
+            assert result["result"]["mcp_version"] == "2024-11-05", "Invalid MCP version"
+            
             return result
         else:
             print(f"Error: HTTP Status {response.status_code}")
@@ -76,6 +85,18 @@ def test_asr_got_query(session_id: Optional[str] = None) -> Dict[str, Any]:
         if response.status_code == 200:
             result = response.json()
             print(f"Success! Answer: {json.dumps(result.get('result', {}).get('answer', 'No answer'), indent=2)}")
+            
+            # Add assertions to verify the correctness of the asr_got.query endpoint response
+            assert result["jsonrpc"] == "2.0", "Invalid JSON-RPC version"
+            assert result["id"] == "test-query-1", "Invalid response ID"
+            assert "result" in result, "Missing result in response"
+            assert "answer" in result["result"], "Missing answer in response"
+            assert "reasoning_trace_summary" in result["result"], "Missing reasoning trace summary in response"
+            assert "graph_state_full" in result["result"], "Missing graph state in response"
+            assert "confidence_vector" in result["result"], "Missing confidence vector in response"
+            assert "execution_time_ms" in result["result"], "Missing execution time in response"
+            assert "session_id" in result["result"], "Missing session ID in response"
+            
             return result
         else:
             print(f"Error: HTTP Status {response.status_code}")
