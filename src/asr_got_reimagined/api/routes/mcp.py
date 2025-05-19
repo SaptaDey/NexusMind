@@ -140,11 +140,30 @@ async def handle_asr_got_query(
         reasoning_trace_text = "Reasoning trace not requested or not available."
         if params.parameters and params.parameters.include_reasoning_trace:
             if session_data_result.stage_outputs_trace:  # Check if list is not empty
-                trace_lines = [
-                    f"Stage {s.get('stage_number', 'N/A')}. {s.get('stage_name', 'Unknown Stage')}: {s.get('summary', 'N/A')} ({s.get('duration_ms', 0)}ms)"
-                    for s in session_data_result.stage_outputs_trace
-                ]
-                reasoning_trace_text = "\n".join(trace_lines)
+                try:
+                    trace_lines = [
+                        f"Stage {s.get('stage_number', 'N/A')}. {s.get('stage_name', 'Unknown Stage')}: {s.get('summary', 'N/A')} ({s.get('duration_ms', 0)}ms)"
+                        for s in session_data_result.stage_outputs_trace
+                    ]
+                    reasoning_trace_text = "\n".join(trace_lines)
+                except AttributeError:
+                    # If we get an AttributeError, the stage_outputs_trace might have a different structure
+                    # Convert each item to a dict and try again
+                    try:
+                        trace_lines = []
+                        for item in session_data_result.stage_outputs_trace:
+                            if hasattr(item, '__dict__'):
+                                s = item.__dict__
+                                trace_lines.append(
+                                    f"Stage {s.get('stage_number', 'N/A')}. {s.get('stage_name', 'Unknown Stage')}: {s.get('summary', 'N/A')} ({s.get('duration_ms', 0)}ms)"
+                                )
+                            else:
+                                # As a last resort, just convert to string
+                                trace_lines.append(str(item))
+                        reasoning_trace_text = "\n".join(trace_lines)
+                    except Exception as e:
+                        logger.error(f"Failed to process stage_outputs_trace: {e}")
+                        reasoning_trace_text = "Error processing reasoning trace."
             else:
                 reasoning_trace_text = (
                     "Reasoning trace requested, but no trace data was generated."
@@ -169,12 +188,28 @@ async def handle_asr_got_query(
         logger.exception(
             f"AttributeError during asr_got.query processing for ID {request_id}: {ae}. This might indicate a mismatch in method names (e.g. process_query parameters) or data structures."
         )
-        return create_jsonrpc_error(
-            request_id=request_id,
-            code=-32003,
-            message="Internal server error: Incompatible data structures or method signature mismatch.",
-            data={"details": str(ae), "method": "asr_got.query"},
-        )
+        # Try to still return a response, even if we can't process the trace output
+        try:
+            # Create a fallback response
+            query_result = MCPASRGoTQueryResult(
+                answer="Sorry, there was an error processing this query, but I'll try to provide a response.",
+                reasoning_trace_summary=f"Error in processing: {str(ae)}",
+                graph_state_full=None,
+                confidence_vector=[0.1, 0.1, 0.1, 0.1],  # Low confidence due to error
+                execution_time_ms=0,
+                session_id=getattr(session_data_result, 'session_id', f"error-session-{request_id}"),
+            )
+            logger.warning(f"Returning fallback response for ID: {request_id} after error")
+            return JSONRPCResponse(id=request_id, result=query_result)
+        except Exception as e2:
+            # If even our fallback fails, return the original error
+            logger.error(f"Fallback response also failed: {e2}")
+            return create_jsonrpc_error(
+                request_id=request_id,
+                code=-32003,
+                message="Internal server error: Incompatible data structures or method signature mismatch.",
+                data={"details": str(ae), "method": "asr_got.query"},
+            )
     except Exception as e:
         logger.exception("Error during asr_got.query processing for ID: {}", request_id)
         return create_jsonrpc_error(
