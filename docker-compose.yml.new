@@ -2,7 +2,8 @@
 
 services:
   # Backend API service for NexusMind
-  asr-got-api:    build:
+  nexusmind-api:
+    build:
       context: . # Use the Dockerfile in the current directory
       dockerfile: Dockerfile
     container_name: nexusmind-api
@@ -30,15 +31,15 @@ services:
       PYTHONDONTWRITEBYTECODE: "1" # Prevents .pyc files
     # env_file:
     #   - .env # Uncomment to load environment variables from a .env file
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"] # Assumes a /health endpoint
+    healthcheck:      test: ["CMD", "curl", "-f", "http://localhost:8000/health"] # Assumes a /health endpoint
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 30s # Give more time for the app to start, especially with --reload    networks:
+      start_period: 30s # Give more time for the app to start, especially with --reload
+    networks:
       - nexusmind_network
 
 networks:
   nexusmind_network:
     driver: bridge
-    name: asr_got_reimagined_network
+    name: nexusmind_network

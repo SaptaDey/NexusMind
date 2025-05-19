@@ -5,13 +5,13 @@ from typing import Dict, List, Optional, Tuple, Union
 from loguru import logger
 from pydantic import BaseModel, Field
 
-from asr_got_reimagined.config import Settings
-from asr_got_reimagined.domain.models.graph_elements import (
+from src.asr_got_reimagined.config import Settings
+from src.asr_got_reimagined.domain.models.graph_elements import (
     Node,
     NodeType,
 )
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import GoTProcessorSessionData
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
 
 from .base_stage import BaseStage, StageOutput
 from .stage_6_subgraph_extraction import (  # To get subgraph definitions

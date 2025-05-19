@@ -3,31 +3,10 @@ import uuid
 from typing import Any, Dict, List, Optional, Type
 
 from loguru import logger
-from pydantic import BaseModel, Field
 
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.stages.base_stage import BaseStage
-
-
-class GoTProcessorSessionData(BaseModel):
-    """Data model for session data maintained by GoTProcessor."""
-
-    session_id: str = Field(default_factory=lambda: f"session-{uuid.uuid4()}")
-    query: str
-    graph_state: Optional[ASRGoTGraph] = None
-    final_answer: Optional[str] = None
-    final_confidence_vector: List[float] = Field(default=[0.5, 0.5, 0.5, 0.5])
-    accumulated_context: Dict[str, Any] = Field(default_factory=dict)
-    stage_outputs_trace: List[Dict[str, Any]] = Field(default_factory=list)
-
-
-class ComposedOutput(BaseModel):
-    """Model for the output structure from the Composition Stage."""
-
-    executive_summary: str
-    detailed_report: Optional[str] = None
-    key_findings: List[str] = Field(default_factory=list)
-    confidence_assessment: Optional[Dict[str, Any]] = None
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.stages.base_stage import BaseStage
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData, ComposedOutput
 
 
 class GoTProcessor:
@@ -37,7 +16,7 @@ class GoTProcessor:
 
     def _initialize_stages(self) -> List[BaseStage]:
         """Dynamically loads and initializes all stage classes."""
-        from asr_got_reimagined.domain.stages import (
+        from src.asr_got_reimagined.domain.stages import (
             CompositionStage,
             DecompositionStage,
             EvidenceStage,
@@ -88,7 +67,7 @@ class GoTProcessor:
         Returns:
             GoTProcessorSessionData: The result of processing the query
         """
-        from asr_got_reimagined.domain.stages import CompositionStage, ReflectionStage
+        from src.asr_got_reimagined.domain.stages import CompositionStage, ReflectionStage
 
         start_total_time = time.time()
         logger.info(f"Starting NexusMind query processing for: '{query[:100]}...'")

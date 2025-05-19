@@ -2,7 +2,7 @@
 name = "nexusmind"
 version = "0.1.0"
 description = "NexusMind: Intelligent Scientific Reasoning through Graph-of-Thoughts MCP Server"
-authors = ["NexusMind Development Team <support@nexusmind.org>"] 
+authors = ["NexusMind Development Team <saptaswadey@gmail.com>"] 
 readme = "README.md"
 license = "Apache-2.0"
 repository = "https://github.com/nexusmind/nexusmind"
@@ -80,5 +80,6 @@ asyncio_mode = "auto"
 # Add more options as needed, e.g., test file patterns
 # python_files = "tests.py test_*.py *_tests.py"
 
-[tool.poetry.packages]
-include = ["src/nexusmind"]
+[[tool.poetry.packages]]
+include = "asr_got_reimagined"
+from = "src"

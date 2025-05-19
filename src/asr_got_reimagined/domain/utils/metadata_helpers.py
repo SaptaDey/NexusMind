@@ -2,7 +2,7 @@ from typing import Any, Dict, List, Optional
 
 from loguru import logger
 
-# from asr_got_reimagined.domain.models.graph_elements import FalsificationCriteria, BiasFlag # If needed
+# from src.asr_got_reimagined.domain.models.graph_elements import FalsificationCriteria, BiasFlag # If needed
 
 
 def assess_falsifiability_score(

@@ -3,10 +3,10 @@ from typing import Any, Dict, List, Optional, Set
 from loguru import logger
 from pydantic import BaseModel, Field  # For defining subgraph criteria structure
 
-from asr_got_reimagined.config import Settings
-from asr_got_reimagined.domain.models.graph_elements import Node, NodeType
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import GoTProcessorSessionData
+from src.asr_got_reimagined.config import Settings
+from src.asr_got_reimagined.domain.models.graph_elements import Node, NodeType
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
 
 from .base_stage import BaseStage, StageOutput
 
@@ -140,14 +140,13 @@ class SubgraphExtractionStage(BaseStage):
             next_frontier: Set[str] = set()
             if not current_frontier:
                 break
-            for node_id in current_frontier:
-                # Use graph._nx_graph for neighbor finding
-                if graph._nx_graph.has_node(node_id):
-                    for neighbor_id in graph._nx_graph.neighbors(node_id):  # Outgoing
+            for node_id in current_frontier:                # Use graph.nx_graph for neighbor finding
+                if graph.nx_graph.has_node(node_id):
+                    for neighbor_id in graph.nx_graph.neighbors(node_id):  # Outgoing
                         if neighbor_id not in final_subgraph_node_ids:
                             next_frontier.add(neighbor_id)
                             final_subgraph_node_ids.add(neighbor_id)
-                    for predecessor_id in graph._nx_graph.predecessors(
+                    for predecessor_id in graph.nx_graph.predecessors(
                         node_id
                     ):  # Incoming
                         if predecessor_id not in final_subgraph_node_ids:
@@ -157,9 +156,8 @@ class SubgraphExtractionStage(BaseStage):
 
         # Induce subgraph in NetworkX to get edges, or manually collect edges
         # For now, we just return node IDs. The Composition stage can use these.
-        num_nodes = len(final_subgraph_node_ids)
-        # Could calculate num_edges if we induce the subgraph here
-        # induced_nx_subgraph = graph._nx_graph.subgraph(final_subgraph_node_ids)
+        num_nodes = len(final_subgraph_node_ids)        # Could calculate num_edges if we induce the subgraph here
+        # induced_nx_subgraph = graph.nx_graph.subgraph(final_subgraph_node_ids)
         # num_edges = induced_nx_subgraph.number_of_edges()
 
         logger.info(f"Extracted subgraph '{criterion.name}' with {num_nodes} nodes.")

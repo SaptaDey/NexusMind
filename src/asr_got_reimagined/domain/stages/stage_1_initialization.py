@@ -1,12 +1,10 @@
 from loguru import logger
 
-from asr_got_reimagined.config import Settings
-from asr_got_reimagined.domain.models.common import ConfidenceVector, EpistemicStatus
-from asr_got_reimagined.domain.models.graph_elements import Node, NodeMetadata, NodeType
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import (
-    GoTProcessorSessionData,  # For type hinting
-)
+from src.asr_got_reimagined.config import Settings
+from src.asr_got_reimagined.domain.models.common import ConfidenceVector, EpistemicStatus
+from src.asr_got_reimagined.domain.models.graph_elements import Node, NodeMetadata, NodeType
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
 
 from .base_stage import BaseStage, StageOutput
 
@@ -82,7 +80,7 @@ class InitializationStage(BaseStage):
         # Setup multi-layer structure if defined globally in settings (P1.23)
         # The ASRGoTGraph model's assign_node_to_layer handles adding the node to a layer set.
         # Global layer definitions might be in settings.asr_got.layers
-        for layer_id, layer_def in self.settings.asr_got.layers.items():
+        for layer_id, _ in self.settings.asr_got.layers.items():
             if (
                 layer_id not in graph.layers
             ):  # Initialize layer sets in the graph if not present

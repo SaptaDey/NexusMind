@@ -1,11 +1,11 @@
 from loguru import logger  # type: ignore
 from typing import List, Dict, Any
 
-from asr_got_reimagined.config import Settings
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.models.graph_elements import Node, Edge, NodeType, EdgeType, NodeMetadata, EdgeMetadata
-from asr_got_reimagined.domain.models.common import ConfidenceVector, EpistemicStatus
-from asr_got_reimagined.domain.services.got_processor import GoTProcessorSessionData # For type hinting
+from src.asr_got_reimagined.config import Settings
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.graph_elements import Node, Edge, NodeType, EdgeType, NodeMetadata, EdgeMetadata
+from src.asr_got_reimagined.domain.models.common import ConfidenceVector, EpistemicStatus
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
 from .base_stage import BaseStage, StageOutput
 
 class DecompositionStage(BaseStage):

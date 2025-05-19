@@ -2,8 +2,8 @@ from typing import List, Optional
 
 from loguru import logger
 
-from asr_got_reimagined.domain.models.common import CertaintyScore, ConfidenceVector
-from asr_got_reimagined.domain.models.graph_elements import EdgeType, StatisticalPower
+from src.asr_got_reimagined.domain.models.common import CertaintyScore, ConfidenceVector
+from src.asr_got_reimagined.domain.models.graph_elements import EdgeType, StatisticalPower
 
 
 def bayesian_update_confidence(

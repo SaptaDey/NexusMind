@@ -1,13 +1,19 @@
 ﻿import sys
+import os
 from contextlib import asynccontextmanager
+
+# Add src directory to Python path if not already there
+src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger  # type: ignore
 
-from asr_got_reimagined.api.routes.mcp import mcp_router
-from asr_got_reimagined.config import settings
-from asr_got_reimagined.domain.services.got_processor import GoTProcessor
+from src.asr_got_reimagined.api.routes.mcp import mcp_router
+from src.asr_got_reimagined.simple_config import settings
+from src.asr_got_reimagined.domain.services.got_processor import GoTProcessor
 
 
 @asynccontextmanager

@@ -37,7 +37,7 @@ NexusMind leverages **graph structures** to perform sophisticated scientific rea
 ### 8-Stage Reasoning Pipeline
 
 <div align="center">
-  <img src="https://mermaid.ink/img/pako:eNp1k89OwzAMxl8l8nGyFwjXHUDiAKfdOCCOJnFH0WLXadIVofa92Z9Oy8YOiWx9v9j-7Oim5NwjyZW8RANWn4ypHSgqqgaDjRMH0mOXXI7EGKtbaCgL69LBEx0Ui_XeEXRxt9gWTbAkE8sMxivYruDRQe3RfQIxGD9FWNkLxKR5x2y4t7ZH-KpVNsYfQacxaxzHUEULmP6qfXpvkFS_dAohGQlGjyzOoJzO2JWxKloheyPGdZfMrWnejUFzw_m0jGv_jE3P5vhhTQf3yLmlVuUr0-mhxeCkOgeDsQM9VhZ7Tuk3IbIuH81x_tZwNfRzesf_yaMpEOuCiy6_l2OnEiTqnlVbedI-ObXuj4qafIkz_fjcJ8kJ5KR2atpa53WXVavWu--H77-WVJ9Sueb9eNLtYMrjRZzc9njFo4dLuz3oz4WnbLw4jQtns9lkuPlztXSh_3hUcGZzeg7EXpyDOLlycn7jpvRRnU_4uEKTiCYsfCIuut8F1AeySl2lGhQK6RtS2CKtpCmkVmBJyYGUe-39nZSIhtwdSuUIP9KrXKNG3tbS_2Zkc8I?type=png" width="700" height="350"/>
+  <img src="https://mermaid.ink/img/pako:eNqNk01PwzAMhv9KlBNIaIhtt1UwDhw2cUCIw5K4W9HSlI6kGkP03zMnLSsVA3GJneTxm8_XnUhuGFeFmPgtKty6NcuXCih6p9oonN9SPuoK9ch7dJynwKhanBYNKZHN8BOcx8CerrEsuzG8o3a1PmnUx-BwTQbpvnfnHRqsrWvPqbMmCPJduueDJG74XWnUe00PrK1-z1pInILbI7vzYULl7MBujNP-jOR6JCZ9QfbONP-Gobhle9rGNX3FrmftWYMzx71Q5fCJrGwrZqvEJRg0LehQeey4St8ZkefoaHH6VvM09XN6wfvkKeWITc75sLzLJ0smaNQdq0piR_jFaTuioiHe8SS_tvlPkhPIST1Q3TgfTF8N20PP-4fp-49VqM9Rt45PeJpfYMrTBbycNj6j27Hp4d4P58J_6Wh2Hw_O5vP5jDeHvZUz4-9BGqbIb_SUiZk4pPFmcsS6p7Emf1anBR-eUaepSQuXs45HRYr2AkojCNR-aDzoaLkZA2JZezapw5YSZ6zMcePcY0yaBWUIx0XJCfraMVgBDQq5RQNKSseKnS_KptPwVYZ6PMH9IVwun83a2-KZ69SPk_wFo9Vg_w?type=png" width="700" height="400"/>
 </div>
 
 The core reasoning process follows a sophisticated 8-stage pipeline:
@@ -118,16 +118,16 @@ The core reasoning process follows a sophisticated 8-stage pipeline:
 <div align="center">
   <table>
     <tr>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="38" height="38"/><br>Python 3.13+</td>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" width="38" height="38"/><br>FastAPI</td>
-      <td align="center"><img src="https://networkx.org/documentation/latest/_static/networkx_logo.svg" width="38" height="38"/><br>NetworkX</td>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="38" height="38"/><br>Docker</td>
+      <td align="center"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="38" height="38"/><br>Python 3.13+</td>
+      <td align="center"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" width="38" height="38"/><br>FastAPI</td>
+      <td align="center"><img src="https://networkx.org/documentation/stable/_static/networkx_logo.svg" width="38" height="38"/><br>NetworkX</td>
+      <td align="center"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" width="38" height="38"/><br>Docker</td>
     </tr>
     <tr>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original.svg" width="38" height="38"/><br>Pytest</td>
-      <td align="center"><img src="https://docs.pydantic.dev/latest/logo-white.svg" width="38" height="38"/><br>Pydantic</td>
+      <td align="center"><img src="https://docs.pytest.org/en/7.3.x/_static/pytest_logo_curves.svg" width="38" height="38"/><br>Pytest</td>
+      <td align="center"><img src="https://docs.pydantic.dev/latest/img/logo-white.svg" width="38" height="38"/><br>Pydantic</td>
       <td align="center"><img src="https://python-poetry.org/images/logo-origami.svg" width="38" height="38"/><br>Poetry</td>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/uvicorn/uvicorn-original.svg" width="38" height="38"/><br>Uvicorn</td>
+      <td align="center"><img src="https://raw.githubusercontent.com/tomchristie/uvicorn/master/docs/uvicorn.png" width="38" height="38"/><br>Uvicorn</td>
     </tr>
   </table>
 </div>
@@ -177,7 +177,7 @@ asr-got-reimagined/
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/SaptaDey/NexusMind.git
-   cd asr-got-reimagined
+   cd NexusMind
    ```
 
 2. **Install dependencies using Poetry**:
@@ -210,7 +210,7 @@ asr-got-reimagined/
 ### Docker Deployment
 
 <div align="center">
-  <img src="https://mermaid.ink/img/pako:eNptkk1vwjAMhv9KlBNIaIhttzL1wGFjE9OQ9tFLE5eaJs6UuKAW8d9noCDKYS9-7OextfuKSs-RV-LsJX7j_nWBhoOSQLuSQkXvKtxNlu1s8HyKiZNiDre3OnJ1apItoxXa4K2Re0jecVeZOL01JsdN4tR9-njFHbke1xSj1cnZZIXG-mTfQfdJc_A87-nj4ajBKmrB3xPXumYXNla-9DPmQBox_OfRUkvW4ieuOtgGR7CzrptGfzRwW-dqdTN4nbH1Z5eNis36Z5JK9Rn6QLJDkdMTjYvMXBHDGoFcE-Yllc5IE3ddopDjPA-zeLHMwnSQpWy6mLOb-2UcxbNinI6mcTZih3Kc55Pw_i_wPK_APAuiMIzYoViGUTQdxDMWlSXbYyWGZAavWQ6VwbKkshHp84-0nUxUXxukbdzj93q5_wFAuLEJ?type=png" width="400" height="200"/>
+  <img src="https://mermaid.ink/img/pako:eNptks1uwjAMx1_FyglQaAjYbmXqgcPGpk2bog1xaWLXmibOlLhQNeW9Z5C2AuWQyPb_Z8ef5B2VXiKvxD1KfMfDw4wNGyWZqqywIH1R4X6y6Gaj5SN4TorF0j_qyNXOJvlm9FLp4CyJA5DxXDcmzrYmFHhNnHpML0_Yo9fzmmI0Ojnrr1AHn-wNdB_VB89_nj6ez5qNohb8I3Gla3ZmbuVdP2LOeI_Df54ttWQtfuG6h21wj-xcaNfRP41wG2fr5Qa8zdn6o89GRb_5nmR8_RC6VrJHUdSTzJXRLBHodCGurhSTJu6mRCmneZlG6WyVJpNxnrH7aclub5dhGK_ydDrJ43zCTscylUn--hfwPK_APAsGGcj2AG7J-0l8Bgc5bYjkU2jO1rRruBhtKLgxP2jRguKMuabZ_ohUsq2hf3FXw3xEv3ic4n4XUD_Tan-7GhQK6fFSuCeD0hTSKAykFEdSjoXKmZSIzbnCfKcc7V9zfX5-pbm41Z-kdTVLXA?type=png" width="500" height="300"/>
 </div>
 
 1. **Build and run the Docker containers**:

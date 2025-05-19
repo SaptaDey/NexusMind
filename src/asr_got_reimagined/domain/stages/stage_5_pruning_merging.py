@@ -2,16 +2,16 @@ from typing import List, Set, Tuple
 
 from loguru import logger
 
-from asr_got_reimagined.config import Settings
-from asr_got_reimagined.domain.models.graph_elements import (
+from src.asr_got_reimagined.config import Settings
+from src.asr_got_reimagined.domain.models.graph_elements import (
     Edge,
     Node,
     NodeType,
     RevisionRecord,
 )
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import GoTProcessorSessionData
-from asr_got_reimagined.domain.utils.metadata_helpers import (
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
+from src.asr_got_reimagined.domain.utils.metadata_helpers import (
     calculate_semantic_similarity,  # Using our placeholder
 )
 
@@ -186,10 +186,8 @@ class PruningMergingStage(BaseStage):
             logger.info(
                 f"Merging node '{merge_away_node.label}' (ID: {merge_away_node.id}) into "
                 f"'{keep_node.label}' (ID: {keep_node.id}). Overlap: {overlap_score:.2f}"
-            )
-
-            # 1. Re-wire edges: Point edges from/to merge_away_node to keep_node
-            # This requires iterating through graph.edges and graph._nx_graph
+            )            # 1. Re-wire edges: Point edges from/to merge_away_node to keep_node
+            # This requires iterating through graph.edges and graph.nx_graph
             # This is a complex step and needs careful handling in ASRGoTGraph for robust implementation.
             # For now, simplified in ASRGoTGraph.remove_node, but true merge needs more.
 
@@ -248,13 +246,31 @@ class PruningMergingStage(BaseStage):
                     + f"\nMerged content from {merge_away_node.id}: {merge_away_node.metadata.description}"
                 )
             # Update confidence - e.g., weighted average or max, needs careful thought based on P1.14 principles
-            # For now, let's take the components of the 'keep_node' or a simple max
+            # Take the maximum value for each confidence component
+            
+            # Calculate max values for each component
             new_emp = max(
                 keep_node.confidence.empirical_support,
                 merge_away_node.confidence.empirical_support,
             )
-            # ... (do for other components)
-            # keep_node.confidence = ConfidenceVector(empirical_support=new_emp, ...) # Simplified
+            new_coherence = max(
+                keep_node.confidence.coherence,
+                merge_away_node.confidence.coherence,
+            )
+            new_reliability = max(
+                keep_node.confidence.reliability,
+                merge_away_node.confidence.reliability,
+            )
+            new_robustness = max(
+                keep_node.confidence.robustness,
+                merge_away_node.confidence.robustness,
+            )
+            
+            # Update the confidence attributes directly instead of creating a new object
+            keep_node.confidence.empirical_support = new_emp
+            keep_node.confidence.coherence = new_coherence
+            keep_node.confidence.reliability = new_reliability
+            keep_node.confidence.robustness = new_robustness
 
             keep_node.metadata.revision_history.append(
                 RevisionRecord(

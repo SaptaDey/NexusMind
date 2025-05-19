@@ -2,7 +2,7 @@ from typing import Any, Dict
 
 from loguru import logger
 
-# from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph # If needed
+# from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph # If needed
 
 
 def detect_communities(graph_nx: Any) -> Dict[str, int]:  # graph_nx: nx.Graph

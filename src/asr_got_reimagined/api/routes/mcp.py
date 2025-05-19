@@ -5,7 +5,7 @@ from fastapi import APIRouter, HTTPException, Request
 from loguru import logger
 from pydantic import ValidationError
 
-from asr_got_reimagined.api.schemas import (
+from src.asr_got_reimagined.api.schemas import (
     GraphStateSchema,
     JSONRPCErrorObject,
     JSONRPCRequest,
@@ -16,9 +16,9 @@ from asr_got_reimagined.api.schemas import (
     MCPInitializeResult,
     ShutdownParams,
 )
-from asr_got_reimagined.config import settings
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import (
+from src.asr_got_reimagined.simple_config import settings
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.services.got_processor import (
     GoTProcessor,
     GoTProcessorSessionData,
 )

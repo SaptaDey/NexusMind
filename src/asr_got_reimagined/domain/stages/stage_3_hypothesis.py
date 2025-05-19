@@ -3,15 +3,15 @@ from typing import Any, Dict, List
 
 from loguru import logger
 
-from asr_got_reimagined.config import Settings
-from asr_got_reimagined.domain.models.common import (
+from src.asr_got_reimagined.config import Settings
+from src.asr_got_reimagined.domain.models.common import (
     ConfidenceVector,
     EpistemicStatus,
-    ImpactScore,
 )
-from asr_got_reimagined.domain.models.graph_elements import (
+from src.asr_got_reimagined.domain.models.graph_elements import (
     BiasFlag,
     Edge,
+    EdgeMetadata,
     EdgeType,
     FalsificationCriteria,
     Node,
@@ -19,13 +19,12 @@ from asr_got_reimagined.domain.models.graph_elements import (
     NodeType,
     Plan,
 )
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import GoTProcessorSessionData
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
 
 from .base_stage import BaseStage, StageOutput
 
 # Import names of previous stages to access their output keys in accumulated_context
-from .stage_1_initialization import InitializationStage
 from .stage_2_decomposition import DecompositionStage
 
 
@@ -101,7 +100,7 @@ class HypothesisStage(BaseStage):
             )
 
         # P1.28: Potential impact estimate
-        impact_score = ImpactScore(random.uniform(0.2, 0.9))
+        impact_score = random.uniform(0.2, 0.9)  # Use the raw float value for ImpactScore type
 
         # P1.8: Tag with disciplinary provenance (simplified selection)
         num_tags = random.randint(1, min(2, len(self.default_disciplinary_tags_config)))
@@ -125,9 +124,6 @@ class HypothesisStage(BaseStage):
     ) -> StageOutput:
         self._log_start(current_session_data.session_id)
 
-        initialization_output = current_session_data.accumulated_context.get(
-            InitializationStage.stage_name, {}
-        )
         decomposition_output = current_session_data.accumulated_context.get(
             DecompositionStage.stage_name, {}
         )
@@ -224,16 +220,16 @@ class HypothesisStage(BaseStage):
                 hypotheses_for_dim_count += 1
 
                 # Connect hypothesis node to its parent dimension node
-                edge_id = f"edge_{dim_id}_{hypo_id}"
+                edge_id = f"{dim_id}_to_{hypo_id}"
                 hypothesis_edge = Edge(
                     id=edge_id,
                     source_id=dim_id,
                     target_id=hypo_id,
                     type=EdgeType.GENERATES_HYPOTHESIS,  # Custom type
                     confidence=0.9,  # Confidence in the link, not the hypothesis itself
-                    metadata={
-                        "description": f"Hypothesis '{hypothesis_node.label}' generated for dimension '{dimension_node.label}'."
-                    },
+                    metadata=EdgeMetadata(
+                        description=f"Hypothesis '{hypothesis_node.label}' generated for dimension '{dimension_node.label}'."
+                    ),
                 )
                 graph.add_edge(hypothesis_edge)
                 edges_created_count += 1

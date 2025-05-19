@@ -97,6 +97,7 @@ class Settings(BaseSettings):
     mcp_settings: MCPSettings = Field(default_factory=MCPSettings)
     claude_api: Optional[ClaudeAPIConfig] = None  # Optional section
     knowledge_domains: List[KnowledgeDomain] = Field(default_factory=list)
+    
     model_config = SettingsConfigDict(
         env_nested_delimiter="__",  # e.g., APP__HOST to override app.host
         # Add other sources if needed, e.g., .env file
@@ -104,7 +105,7 @@ class Settings(BaseSettings):
         # env_file_encoding = 'utf-8',
         extra="ignore",  # Ignore extra fields from YAML if any
     )
-
+    
     @classmethod
     def settings_customise_sources(
         cls,
@@ -114,12 +115,9 @@ class Settings(BaseSettings):
         dotenv_settings,
         file_secret_settings,
     ):
-        def yaml_config_settings_source(settings_cls) -> dict[str, Any]:
-            # Return the already loaded yaml_config
+        def yaml_source(*args) -> dict[str, Any]:
+            # Return the already loaded yaml_config directly
             return yaml_config
-
-        def yaml_source(settings_cls) -> dict[str, Any]:
-            return yaml_config_settings_source(settings_cls)
 
         return (
             init_settings,
@@ -134,6 +132,6 @@ class Settings(BaseSettings):
 settings = Settings()
 
 # Example of how to access settings:
-# from asr_got_reimagined.config import settings
+# from src.asr_got_reimagined.config import settings
 # print(settings.app.name)
 # print(settings.asr_got.default_parameters.initial_confidence)

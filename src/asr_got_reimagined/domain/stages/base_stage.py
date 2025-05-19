@@ -4,11 +4,11 @@ from typing import Any, Dict, Optional
 from loguru import logger  # type: ignore
 from pydantic import BaseModel, Field
 
-from asr_got_reimagined.config import (
+from src.asr_got_reimagined.config import (
     Settings,  # To access ASRGoTDefaultParams if needed by stages
 )
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import GoTProcessorSessionData
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
 
 
 class StageOutput(BaseModel):

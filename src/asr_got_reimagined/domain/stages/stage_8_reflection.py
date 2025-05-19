@@ -3,13 +3,13 @@ from typing import Any, Dict, List, Optional
 from loguru import logger
 from pydantic import BaseModel, Field
 
-from asr_got_reimagined.config import Settings
-from asr_got_reimagined.domain.models.common import ConfidenceVector
-from asr_got_reimagined.domain.models.graph_elements import (
+from src.asr_got_reimagined.config import Settings
+from src.asr_got_reimagined.domain.models.common import ConfidenceVector
+from src.asr_got_reimagined.domain.models.graph_elements import (
     NodeType,
 )
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import GoTProcessorSessionData
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
 
 from .base_stage import BaseStage, StageOutput
 from .stage_7_composition import (  # To access composed output

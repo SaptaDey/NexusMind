@@ -4,12 +4,12 @@ from typing import Any, Dict, List, Optional, Set
 
 from loguru import logger  # type: ignore
 
-from asr_got_reimagined.config import Settings
-from asr_got_reimagined.domain.models.common import (
+from src.asr_got_reimagined.config import Settings
+from src.asr_got_reimagined.domain.models.common import (
     ConfidenceVector,
     EpistemicStatus,
 )
-from asr_got_reimagined.domain.models.graph_elements import (
+from src.asr_got_reimagined.domain.models.graph_elements import (
     Edge,
     EdgeType,
     EdgeMetadata,
@@ -22,13 +22,13 @@ from asr_got_reimagined.domain.models.graph_elements import (
     NodeType,
     StatisticalPower,
 )
-from asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
-from asr_got_reimagined.domain.services.got_processor import GoTProcessorSessionData
-from asr_got_reimagined.domain.utils.math_helpers import (
+from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
+from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
+from src.asr_got_reimagined.domain.utils.math_helpers import (
     bayesian_update_confidence,
     calculate_information_gain,
 )
-from asr_got_reimagined.domain.utils.metadata_helpers import (
+from src.asr_got_reimagined.domain.utils.metadata_helpers import (
     calculate_semantic_similarity,
 )
 

@@ -34,8 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    # Set path for Poetry-installed packages (adjust if needed, though not creating venv should put them in standard site-packages)
-    # PYTHONPATH="/opt/poetry/.venv/lib/python3.13/site-packages" # This might not be needed if virtualenvs.create is false
+    # Set path for Poetry-installed packages and the source directory
+    PYTHONPATH="/app" \
     APP_HOME=/app
 
 WORKDIR ${APP_HOME}
@@ -67,8 +67,8 @@ USER appuser
 EXPOSE 8000
 
 # Command to run when the container starts
-# This assumes your FastAPI app instance is named `app` in `asr_got_reimagined.main`
-CMD ["uvicorn", "asr_got_reimagined.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use the full module path from the src directory
+CMD ["uvicorn", "src.asr_got_reimagined.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 # Optional entrypoint script if more complex startup logic is needed
 # ENTRYPOINT ["/entrypoint.sh"]
