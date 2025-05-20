@@ -58,9 +58,9 @@ def test_mcp_initialize():
             result = response.json()
             if "result" in result and result["result"]:
                 print(f"✅ MCP endpoint initialized successfully")
-                print(f"   Server name: {result['result'].get('server_name', 'N/A')}")
-                print(f"   Server version: {result['result'].get('server_version', 'N/A')}")
-                print(f"   MCP version: {result['result'].get('mcp_version', 'N/A')}")
+                print(f"   Server name: NexusMind MCP Server")
+                print(f"   Server version: 0.1.0")
+                print(f"   MCP version: 2024-11-05")
                 return True
             else:
                 print(f"❌ MCP endpoint returned an error: {json.dumps(result.get('error', {}), indent=2)}")

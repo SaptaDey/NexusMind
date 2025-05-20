@@ -58,6 +58,9 @@
       "attachmentsOutput": true
     },
     "defaults": {
+      "server_name": "NexusMind MCP Server",
+      "server_version": "0.1.0",
+      "mcp_version": "2024-11-05"
     }
   }
 }

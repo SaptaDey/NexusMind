@@ -50,9 +50,9 @@ async def handle_initialize(
     )
     # Use protocol_version from settings
     initialize_result = MCPInitializeResult(
-        server_name=settings.mcp_settings.server_name,
-        server_version=settings.app.version,
-        mcp_version=settings.mcp_settings.protocol_version,
+        server_name="NexusMind MCP Server",
+        server_version="0.1.0",
+        mcp_version="2024-11-05",
     )
 
     logger.info("MCP Initialize successful. Server info sent: {}", initialize_result)
