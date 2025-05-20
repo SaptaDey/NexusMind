@@ -1,7 +1,7 @@
 from typing import Any, Dict, List, Optional
 
 from loguru import logger
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 
 from src.asr_got_reimagined.config import Settings
 from src.asr_got_reimagined.domain.models.common import ConfidenceVector
@@ -352,36 +352,71 @@ class ReflectionStage(BaseStage):
         if composed_output_dict:
             try:
                 composed_output_obj = ComposedOutput(**composed_output_dict)
-            except Exception as e:
+            except ValidationError as e:
                 logger.warning(f"Could not parse ComposedOutput for reflection: {e}")
+            except Exception as e:
+                logger.error(f"Unexpected error parsing ComposedOutput: {e}")
 
         audit_results: List[AuditCheckResult] = []
 
         # Perform P1.7 audit checks
-        audit_results.append(await self._check_high_confidence_impact_coverage(graph))
-        audit_results.append(await self._check_bias_flags_assessment(graph))
-        audit_results.append(
-            await self._check_knowledge_gaps_addressed(graph, composed_output_obj)
-        )
-        audit_results.append(await self._check_hypothesis_falsifiability(graph))
-        audit_results.append(await self._check_statistical_rigor(graph))
-        audit_results.append(
-            await self._check_causal_claim_validity(graph)
-        )  # Placeholder
-        audit_results.append(
-            await self._check_temporal_consistency(graph)
-        )  # Placeholder
-        audit_results.append(
-            await self._check_collaboration_attributions(graph)
-        )  # Placeholder
+        try:
+            audit_results.append(await self._check_high_confidence_impact_coverage(graph))
+        except Exception as e:
+            logger.error(f"Error in high_confidence_impact_coverage check: {e}")
+        try:
+            audit_results.append(await self._check_bias_flags_assessment(graph))
+        except Exception as e:
+            logger.error(f"Error in bias_flags_assessment check: {e}")
+        try:
+            audit_results.append(
+                await self._check_knowledge_gaps_addressed(graph, composed_output_obj)
+            )
+        except Exception as e:
+            logger.error(f"Error in knowledge_gaps_addressed check: {e}")
+        try:
+            audit_results.append(await self._check_hypothesis_falsifiability(graph))
+        except Exception as e:
+            logger.error(f"Error in hypothesis_falsifiability check: {e}")
+        try:
+            audit_results.append(await self._check_statistical_rigor(graph))
+        except Exception as e:
+            logger.error(f"Error in statistical_rigor_of_evidence check: {e}")
+        try:
+            audit_results.append(
+                await self._check_causal_claim_validity(graph)
+            )  # Placeholder
+        except Exception as e:
+            logger.error(f"Error in causal_claim_validity check: {e}")
+        try:
+            audit_results.append(
+                await self._check_temporal_consistency(graph)
+            )  # Placeholder
+        except Exception as e:
+            logger.error(f"Error in temporal_consistency check: {e}")
+        try:
+            audit_results.append(
+                await self._check_collaboration_attributions(graph)
+            )  # Placeholder
+        except Exception as e:
+            logger.error(f"Error in collaboration_attributions_check: {e}")
 
         # Filter out NOT_RUN checks if desired for summary
         active_audit_results = [r for r in audit_results if r.status != "NOT_RUN"]
 
         # Calculate final overall confidence (P1.5 style vector for the whole process)
-        final_confidence_vector = await self._calculate_final_confidence(
-            active_audit_results, graph
-        )
+        try:
+            final_confidence_vector = await self._calculate_final_confidence(
+                active_audit_results, graph
+            )
+        except Exception as e:
+            logger.error(f"Error calculating final confidence vector: {e}")
+            final_confidence_vector = ConfidenceVector(
+                empirical_support=0.0,
+                theoretical_basis=0.0,
+                methodological_rigor=0.0,
+                consensus_alignment=0.0,
+            )
 
         summary = (
             f"Reflection stage complete. Performed {len(active_audit_results)} active audit checks. "

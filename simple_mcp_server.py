@@ -1,10 +1,15 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 import uvicorn
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 from typing import Dict, Any, Optional, List, Union
 import json
+import logging
 
 app = FastAPI()
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class QueryContext(BaseModel):
     conversation_id: Optional[str] = None
@@ -32,27 +37,39 @@ async def mcp_handler(request: Request):
         req_id = data.get("id")
         params = data.get("params", {})
 
-        print(f"Received MCP request: {method}, id: {req_id}")
-        print(f"Params: {json.dumps(params, indent=2)}")
+        logger.info(f"Received MCP request: {method}, id: {req_id}")
+        logger.debug(f"Params: {json.dumps(params, indent=2)}")
 
         if method == "initialize":
             return {
                 "jsonrpc": "2.0",
                 "id": req_id,
                 "result": {
-                    "server_name": "Simple NexusMind MCP Server",
+                    "server_name": "NexusMind MCP Server",
                     "server_version": "0.1.0",
                     "mcp_version": "2024-11-05"
                 }
             }
         elif method == "asr_got.query":
             query = params.get("query", "No query provided")
+            # Simulate detailed response with reasoning traces and graph states
+            reasoning_trace_summary = "Reasoning trace: Step 1 -> Step 2 -> Step 3"
+            graph_state_full = {
+                "nodes": [
+                    {"id": "n1", "label": "Node 1", "type": "root"},
+                    {"id": "n2", "label": "Node 2", "type": "evidence"}
+                ],
+                "edges": [
+                    {"id": "e1", "source": "n1", "target": "n2", "type": "supports"}
+                ]
+            }
             return {
                 "jsonrpc": "2.0",
                 "id": req_id,
                 "result": {
                     "answer": f"NexusMind processed your query: {query}",
-                    "reasoning_trace_summary": "This is a sample reasoning trace from the Graph-of-Thoughts process.",
+                    "reasoning_trace_summary": reasoning_trace_summary,
+                    "graph_state_full": graph_state_full,
                     "confidence_vector": [0.85, 0.92, 0.78, 0.89],
                     "execution_time_ms": 1250,
                     "session_id": "sample-session-123"
@@ -65,6 +82,7 @@ async def mcp_handler(request: Request):
                 "result": None
             }
         else:
+            logger.warning(f"Unsupported MCP method received: {method}")
             return {
                 "jsonrpc": "2.0",
                 "id": req_id,
@@ -73,7 +91,19 @@ async def mcp_handler(request: Request):
                     "message": f"Method '{method}' not supported"
                 }
             }
+    except ValidationError as ve:
+        logger.warning(f"MCP Validation Error for method {method}: {ve}")
+        return {
+            "jsonrpc": "2.0",
+            "id": req_id,
+            "error": {
+                "code": -32602,
+                "message": "Invalid parameters.",
+                "data": {"details": ve.errors(), "method": method}
+            }
+        }
     except Exception as e:
+        logger.exception(f"Error in MCP endpoint_handler for method {method}: {e}")
         return {
             "jsonrpc": "2.0",
             "id": None,
@@ -88,5 +118,5 @@ async def health_check():
     return {"status": "healthy", "version": "0.1.0"}
 
 if __name__ == "__main__":
-    print("Starting Simple NexusMind MCP Server...")
+    logger.info("Starting NexusMind MCP Server...")
     uvicorn.run(app, host="0.0.0.0", port=8000)

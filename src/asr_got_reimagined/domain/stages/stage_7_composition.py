@@ -1,9 +1,8 @@
-
 import random
 from typing import Dict, List, Optional, Tuple, Union
 
 from loguru import logger
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 
 from src.asr_got_reimagined.config import Settings
 from src.asr_got_reimagined.domain.models.graph_elements import (
@@ -50,7 +49,7 @@ class ComposedOutput(BaseModel):  # This will be the main "final_composed_answer
     title: str
     executive_summary: str
     sections: List[OutputSection] = Field(default_factory=list)
-    citations: List[CitationItem] = Field(default_factory=list)
+    citations: List<CitationItem] = Field(default_factory=list)
     reasoning_trace_appendix_summary: Optional[str] = None  # P1.6
     # P1.6: Numeric node labels (handled by graph serialization if needed)
     # P1.6: Verbatim queries in metadata (handled by node metadata)
@@ -91,7 +90,7 @@ class CompositionStage(BaseStage):
 
     async def _format_node_as_claim(
         self, node: Node, graph: ASRGoTGraph
-    ) -> Tuple[str, Optional[CitationItem]]:
+    ) -> Tuple[str, Optional<CitationItem]]:
         """
         Formats a node (e.g., hypothesis, key evidence) as a claim string and prepares a citation.
         P1.6: Annotate claims with node IDs & edge types.
@@ -115,7 +114,7 @@ class CompositionStage(BaseStage):
 
     async def _generate_section_from_subgraph(
         self, graph: ASRGoTGraph, subgraph_def: ExtractedSubgraph
-    ) -> Tuple[OutputSection, List[CitationItem]]:
+    ) -> Tuple[OutputSection, List<CitationItem]]:
         """
         Generates content for one output section based on an extracted subgraph.
         Placeholder - LLM or template-based generation would be used.
@@ -210,7 +209,7 @@ class CompositionStage(BaseStage):
                 extracted_subgraphs = [
                     ExtractedSubgraph(**data) for data in extracted_subgraphs_data
                 ]
-            except Exception as e:
+            except ValidationError as e:
                 logger.error(f"Error parsing extracted subgraph definitions: {e}")
 
         initial_query = current_session_data.query
@@ -238,7 +237,7 @@ class CompositionStage(BaseStage):
                 },
             )
 
-        all_citations: List[CitationItem] = []
+        all_citations: List<CitationItem] = []
         output_sections: List[OutputSection] = []
 
         # 1. Generate Executive Summary
@@ -248,11 +247,14 @@ class CompositionStage(BaseStage):
 
         # 2. Generate sections from each subgraph
         for subgraph_def in extracted_subgraphs:
-            section, section_citations = await self._generate_section_from_subgraph(
-                graph, subgraph_def
-            )
-            output_sections.append(section)
-            all_citations.extend(section_citations)
+            try:
+                section, section_citations = await self._generate_section_from_subgraph(
+                    graph, subgraph_def
+                )
+                output_sections.append(section)
+                all_citations.extend(section_citations)
+            except Exception as e:
+                logger.error(f"Error generating section for subgraph '{subgraph_def.name}': {e}")
 
         # Deduplicate citations by id (simplified)
         final_citations_map: Dict[str, CitationItem] = {}

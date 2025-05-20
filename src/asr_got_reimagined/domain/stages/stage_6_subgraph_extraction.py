@@ -204,9 +204,13 @@ class SubgraphExtractionStage(BaseStage):
                     f"Skipping subgraph extraction criterion '{criterion.name}' as graph is empty."
                 )
                 continue
-            subgraph_result = await self._extract_single_subgraph(graph, criterion)
-            if subgraph_result.node_ids:  # Only add if non-empty
-                extracted_subgraphs_results.append(subgraph_result)
+            try:
+                subgraph_result = await self._extract_single_subgraph(graph, criterion)
+                if subgraph_result.node_ids:  # Only add if non-empty
+                    extracted_subgraphs_results.append(subgraph_result)
+            except Exception as e:
+                logger.error(f"Error extracting subgraph for criterion '{criterion.name}': {e}")
+                continue
 
         summary = f"Subgraph extraction complete. Extracted {len(extracted_subgraphs_results)} subgraphs based on defined criteria."
         metrics = {

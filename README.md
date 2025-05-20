@@ -2,7 +2,8 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/SaptaDey/NexusMind/main/static/nexusmind-logo.png" width="180" height="180" alt="NexusMind Logo"/>
+<img src="https://raw.githubusercontent.com/SaptaDey/NexusMind/main/static/nexusmind-logo.png" width="180" height="180" alt="NexusMind Logo"/><br>
+
 
 #### **Intelligent Scientific Reasoning through Graph-of-Thoughts**
 

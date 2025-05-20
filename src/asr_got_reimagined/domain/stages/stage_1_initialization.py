@@ -31,6 +31,16 @@ class InitializationStage(BaseStage):
             "operational_params", {}
         )
 
+        # Validate initial query
+        if not initial_query or not isinstance(initial_query, str):
+            error_message = "Invalid initial query. It must be a non-empty string."
+            logger.error(error_message)
+            return StageOutput(
+                summary=error_message,
+                metrics={"nodes_created": 0},
+                next_stage_context_update={self.stage_name: {"error": error_message}},
+            )
+
         # Create root node (n0) based on P1.1
         root_node_id = "n0"  # Standard ID for the root node
 
@@ -72,10 +82,19 @@ class InitializationStage(BaseStage):
             metadata=root_metadata,
         )
 
-        graph.add_node(root_node)
-        logger.info(
-            f"Root node '{root_node.label}' (ID: {root_node.id}) created and added to graph."
-        )
+        try:
+            graph.add_node(root_node)
+            logger.info(
+                f"Root node '{root_node.label}' (ID: {root_node.id}) created and added to graph."
+            )
+        except Exception as e:
+            error_message = f"Failed to add root node to graph: {e}"
+            logger.error(error_message)
+            return StageOutput(
+                summary=error_message,
+                metrics={"nodes_created": 0},
+                next_stage_context_update={self.stage_name: {"error": error_message}},
+            )
 
         # Setup multi-layer structure if defined globally in settings (P1.23)
         # The ASRGoTGraph model's assign_node_to_layer handles adding the node to a layer set.
