@@ -63,3 +63,15 @@ For advanced users, you can modify the `claude_mcp_config.json` file to:
 - Change the parameters for the reasoning process
 - Adjust the level of detail in the responses
 - Configure how graph state information is displayed
+
+## Detailed Logging
+
+To help identify errors during the 8-stage process, detailed logging has been added. Each stage logs its start and end, along with any significant events or errors. This logging can be found in the server logs.
+
+## Error Handling
+
+Error handling has been implemented for each stage to catch and log exceptions. If an error occurs, it will be logged with details about the stage and the nature of the error. This information can be used to diagnose and fix issues.
+
+## Input Validation
+
+Input parameters are validated to ensure they meet expected formats. If invalid parameters are detected, an error will be logged and an appropriate response will be returned to the client.

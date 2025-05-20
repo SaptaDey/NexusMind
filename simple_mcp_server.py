@@ -1,10 +1,15 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 import uvicorn
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 from typing import Dict, Any, Optional, List, Union
 import json
+import logging
 
 app = FastAPI()
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class QueryContext(BaseModel):
     conversation_id: Optional[str] = None
@@ -32,8 +37,8 @@ async def mcp_handler(request: Request):
         req_id = data.get("id")
         params = data.get("params", {})
 
-        print(f"Received MCP request: {method}, id: {req_id}")
-        print(f"Params: {json.dumps(params, indent=2)}")
+        logger.info(f"Received MCP request: {method}, id: {req_id}")
+        logger.debug(f"Params: {json.dumps(params, indent=2)}")
 
         if method == "initialize":
             return {
@@ -77,6 +82,7 @@ async def mcp_handler(request: Request):
                 "result": None
             }
         else:
+            logger.warning(f"Unsupported MCP method received: {method}")
             return {
                 "jsonrpc": "2.0",
                 "id": req_id,
@@ -85,7 +91,19 @@ async def mcp_handler(request: Request):
                     "message": f"Method '{method}' not supported"
                 }
             }
+    except ValidationError as ve:
+        logger.warning(f"MCP Validation Error for method {method}: {ve}")
+        return {
+            "jsonrpc": "2.0",
+            "id": req_id,
+            "error": {
+                "code": -32602,
+                "message": "Invalid parameters.",
+                "data": {"details": ve.errors(), "method": method}
+            }
+        }
     except Exception as e:
+        logger.exception(f"Error in MCP endpoint_handler for method {method}: {e}")
         return {
             "jsonrpc": "2.0",
             "id": None,
@@ -100,5 +118,5 @@ async def health_check():
     return {"status": "healthy", "version": "0.1.0"}
 
 if __name__ == "__main__":
-    print("Starting NexusMind MCP Server...")
+    logger.info("Starting NexusMind MCP Server...")
     uvicorn.run(app, host="0.0.0.0", port=8000)
