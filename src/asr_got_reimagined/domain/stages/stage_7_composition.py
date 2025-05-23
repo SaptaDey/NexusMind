@@ -49,7 +49,7 @@ class ComposedOutput(BaseModel):  # This will be the main "final_composed_answer
     title: str
     executive_summary: str
     sections: List[OutputSection] = Field(default_factory=list)
-    citations: List<CitationItem] = Field(default_factory=list)
+    citations: List[CitationItem] = Field(default_factory=list)
     reasoning_trace_appendix_summary: Optional[str] = None  # P1.6
     # P1.6: Numeric node labels (handled by graph serialization if needed)
     # P1.6: Verbatim queries in metadata (handled by node metadata)
@@ -90,7 +90,7 @@ class CompositionStage(BaseStage):
 
     async def _format_node_as_claim(
         self, node: Node, graph: ASRGoTGraph
-    ) -> Tuple[str, Optional<CitationItem]]:
+    ) -> Tuple[str, Optional[CitationItem]]:
         """
         Formats a node (e.g., hypothesis, key evidence) as a claim string and prepares a citation.
         P1.6: Annotate claims with node IDs & edge types.
@@ -114,7 +114,7 @@ class CompositionStage(BaseStage):
 
     async def _generate_section_from_subgraph(
         self, graph: ASRGoTGraph, subgraph_def: ExtractedSubgraph
-    ) -> Tuple[OutputSection, List<CitationItem]]:
+    ) -> Tuple[OutputSection, List[CitationItem]]:
         """
         Generates content for one output section based on an extracted subgraph.
         Placeholder - LLM or template-based generation would be used.
@@ -196,13 +196,12 @@ class CompositionStage(BaseStage):
     ) -> StageOutput:
         self._log_start(current_session_data.session_id)
 
-        subgraph_extraction_output = current_session_data.accumulated_context.get(
-            SubgraphExtractionStage.stage_name, {}
-        )  # These are dicts, so we need to parse them back to ExtractedSubgraph Pydantic models
-        extracted_subgraphs_data: List[Dict] = subgraph_extraction_output.get(
+        # GoTProcessor now stores the dictionary from next_stage_context_update directly.
+        subgraph_extraction_data_from_context = current_session_data.accumulated_context.get(SubgraphExtractionStage.stage_name, {})
+        extracted_subgraphs_data: List[Dict] = subgraph_extraction_data_from_context.get(
             "extracted_subgraphs_definitions", []
         )
-
+        
         extracted_subgraphs: List[ExtractedSubgraph] = []
         if extracted_subgraphs_data:
             try:
@@ -237,7 +236,7 @@ class CompositionStage(BaseStage):
                 },
             )
 
-        all_citations: List<CitationItem] = []
+        all_citations: List[CitationItem] = []
         output_sections: List[OutputSection] = []
 
         # 1. Generate Executive Summary

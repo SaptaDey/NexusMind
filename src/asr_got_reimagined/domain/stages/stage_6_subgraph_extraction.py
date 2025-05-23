@@ -174,7 +174,7 @@ class SubgraphExtractionStage(BaseStage):
         self._log_start(current_session_data.session_id)
 
         # Allow operational parameters to override or add to default criteria
-        operational_params = current_session_data.operational_parameters
+        operational_params = current_session_data.accumulated_context.get("operational_params", {})
         custom_criteria_input = operational_params.get("subgraph_extraction_criteria")
 
         criteria_to_use: List[SubgraphCriterion] = []

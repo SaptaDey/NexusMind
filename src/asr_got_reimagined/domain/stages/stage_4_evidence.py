@@ -398,10 +398,9 @@ class EvidenceStage(BaseStage):
         self, graph: ASRGoTGraph, current_session_data: GoTProcessorSessionData
     ) -> StageOutput:
         self._log_start(current_session_data.session_id)
-        hypothesis_stage_output = current_session_data.accumulated_context.get(
-            HypothesisStage.stage_name, {}
-        )
-        hypothesis_node_ids: List[str] = hypothesis_stage_output.get(
+        # GoTProcessor now stores the dictionary from next_stage_context_update directly.
+        hypothesis_data_from_context = current_session_data.accumulated_context.get(HypothesisStage.stage_name, {})
+        hypothesis_node_ids: List[str] = hypothesis_data_from_context.get(
             "hypothesis_node_ids", []
         )
 

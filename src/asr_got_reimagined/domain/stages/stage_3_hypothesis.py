@@ -124,15 +124,13 @@ class HypothesisStage(BaseStage):
     ) -> StageOutput:
         self._log_start(current_session_data.session_id)
 
-        decomposition_output = current_session_data.accumulated_context.get(
-            DecompositionStage.stage_name, {}
-        )
-
-        dimension_node_ids: List[str] = decomposition_output.get(
+        # GoTProcessor now stores the dictionary from next_stage_context_update directly.
+        decomposition_data_from_context = current_session_data.accumulated_context.get(DecompositionStage.stage_name, {})
+        dimension_node_ids: List[str] = decomposition_data_from_context.get(
             "dimension_node_ids", []
         )
-        initial_query = current_session_data.initial_query
-        operational_params = current_session_data.operational_parameters
+        initial_query = current_session_data.query
+        operational_params = current_session_data.accumulated_context.get("operational_params", {})
 
         if not dimension_node_ids:
             logger.warning(
