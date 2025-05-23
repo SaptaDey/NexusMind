@@ -6,7 +6,7 @@ from src.asr_got_reimagined.domain.models.graph_state import ASRGoTGraph
 from src.asr_got_reimagined.domain.models.graph_elements import Node, Edge, NodeType, EdgeType, NodeMetadata, EdgeMetadata
 from src.asr_got_reimagined.domain.models.common import ConfidenceVector, EpistemicStatus
 from src.asr_got_reimagined.domain.models.common_types import GoTProcessorSessionData
-from .base_stage import BaseStage, StageOutput
+from .base_stage import BaseStage, StageOutput # Ensure StageOutput is imported
 
 class DecompositionStage(BaseStage):
     stage_name: str = "DecompositionStage"
@@ -26,10 +26,12 @@ class DecompositionStage(BaseStage):
         from .stage_1_initialization import InitializationStage
 
         # Retrieve root_node_id and initial_disciplinary_tags from the accumulated context
-        initialization_output = current_session_data.accumulated_context.get(InitializationStage.stage_name, {})
-        root_node_id = initialization_output.get("root_node_id")
+        # GoTProcessor now stores the dictionary from next_stage_context_update directly.
+        initialization_data_from_context = current_session_data.accumulated_context.get(InitializationStage.stage_name, {})
+        
+        root_node_id = initialization_data_from_context.get("root_node_id")
         # Use initial tags for dimensions, or allow override by operational_params
-        default_disciplinary_tags = set(initialization_output.get("initial_disciplinary_tags",
+        default_disciplinary_tags = set(initialization_data_from_context.get("initial_disciplinary_tags",
                                                               self.default_params.default_disciplinary_tags))
 
         if not root_node_id or not graph.get_node(root_node_id):

@@ -21,6 +21,7 @@ COPY poetry.lock pyproject.toml ./
 # Configure Poetry to not create a virtual environment in the project directory
 # Instead, it will install into the system Python environment (or a venv we specify later)
 RUN poetry config virtualenvs.create false && \
+    poetry lock --no-update && \
     poetry install --no-dev --no-interaction --no-ansi
 
 # Stage 2: Runtime stage - Create the final application image

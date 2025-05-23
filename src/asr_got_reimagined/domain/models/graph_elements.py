@@ -3,7 +3,7 @@ import uuid  # For generating default IDs
 from enum import Enum
 from typing import Any, Dict, List, Optional, Set
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, field_serializer
 
 from .common import (
     CertaintyScore,
@@ -204,7 +204,13 @@ class Node(TimestampedModel):
     label: str = Field(..., min_length=1)
     type: NodeType
     confidence: ConfidenceVector = Field(default_factory=ConfidenceVector)
-    metadata: NodeMetadata = Field(default_factory=NodeMetadata)    # To allow Node instances to be added to sets or used as dict keys
+    metadata: NodeMetadata = Field(default_factory=NodeMetadata)
+
+    @field_serializer('confidence')
+    def serialize_confidence_to_list(self, v: ConfidenceVector, _info):
+        return v.to_list()
+
+    # To allow Node instances to be added to sets or used as dict keys
     def __hash__(self):
         return hash(self.id)
 
