@@ -2,8 +2,17 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/SaptaDey/NexusMind/main/static/nexusmind-logo.png" width="180" height="180" alt="NexusMind Logo"/><br>
-
+```
+    ╔══════════════════════════════════════╗
+    ║                                      ║
+    ║           🧠 NexusMind 🧠            ║
+    ║                                      ║
+    ║     Intelligent Scientific           ║
+    ║     Reasoning through                ║
+    ║     Graph-of-Thoughts                ║
+    ║                                      ║
+    ╚══════════════════════════════════════╝
+```
 
 #### **Intelligent Scientific Reasoning through Graph-of-Thoughts**
 
@@ -24,7 +33,7 @@
 
 ## 🔍 Overview
 
-NexusMind leverages **graph structures** to perform sophisticated scientific reasoning. It implements the **Model Context Protocol (MCP)** to integrate with AI applications like Claude Desktop.
+NexusMind leverages **graph structures** to perform sophisticated scientific reasoning. It implements the **Model Context Protocol (MCP)** to integrate with AI applications like Claude Desktop, providing an Advanced Scientific Reasoning Graph-of-Thoughts (ASR-GoT) framework designed for complex research tasks.
 
 **Key highlights:**
 - Process complex scientific queries using graph-based reasoning
@@ -32,58 +41,98 @@ NexusMind leverages **graph structures** to perform sophisticated scientific rea
 - Built with modern Python and FastAPI for high performance
 - Dockerized for easy deployment
 - Modular design for extensibility and customization
+- Integration with Claude Desktop via MCP protocol
 
 ## 🌟 Key Features
 
 ### 8-Stage Reasoning Pipeline
 
 <div align="center">
-  <img src="https://mermaid.ink/img/pako:eNqNk01PwzAMhv9KlBNIaIhtt1UwDhw2cUCIw5K4W9HSlI6kGkP03zMnLSsVA3GJneTxm8_XnUhuGFeFmPgtKty6NcuXCih6p9oonN9SPuoK9ch7dJynwKhanBYNKZHN8BOcx8CerrEsuzG8o3a1PmnUx-BwTQbpvnfnHRqsrWvPqbMmCPJduueDJG74XWnUe00PrK1-z1pInILbI7vzYULl7MBujNP-jOR6JCZ9QfbONP-Gobhle9rGNX3FrmftWYMzx71Q5fCJrGwrZqvEJRg0LehQeey4St8ZkefoaHH6VvM09XN6wfvkKeWITc75sLzLJ0smaNQdq0piR_jFaTuioiHe8SS_tvlPkhPIST1Q3TgfTF8N20PP-4fp-49VqM9Rt45PeJpfYMrTBbycNj6j27Hp4d4P58J_6Wh2Hw_O5vP5jDeHvZUz4-9BGqbIb_SUiZk4pPFmcsS6p7Emf1anBR-eUaepSQuXs45HRYr2AkojCNR-aDzoaLkZA2JZezapw5YSZ6zMcePcY0yaBWUIx0XJCfraMVgBDQq5RQNKSseKnS_KptPwVYZ6PMH9IVwun83a2-KZ69SPk_wFo9Vg_w?type=png" width="700" height="400"/>
+
+```mermaid
+graph TB
+    subgraph "🧠 NexusMind ASR-GoT Pipeline"
+        A["🌱 Stage 1<br/>Initialization"] --> B["🧩 Stage 2<br/>Decomposition"]
+        B --> C["🔬 Stage 3<br/>Hypothesis/Planning"]
+        C --> D["📊 Stage 4<br/>Evidence Integration"]
+        D --> E["✂️ Stage 5<br/>Pruning/Merging"]
+        E --> F["🔍 Stage 6<br/>Subgraph Extraction"]
+        F --> G["📝 Stage 7<br/>Composition"]
+        G --> H["🤔 Stage 8<br/>Reflection"]
+    end
+    
+    subgraph "Stage Details"
+        A1["• Create root node with confidence vector<br/>• Set initial graph structure<br/>• Define metadata schema"]
+        B1["• Break query into dimensions<br/>• Identify scope, objectives, constraints<br/>• Detect potential biases early"]
+        C1["• Generate 3-5 hypotheses per dimension<br/>• Create falsification criteria<br/>• Plan evidence gathering strategy"]
+        D1["• Select hypotheses by confidence/impact ratio<br/>• Link evidence with typed edges<br/>• Update confidence via Bayesian methods"]
+        E1["• Remove low confidence/impact nodes<br/>• Merge semantically similar elements<br/>• Optimize graph topology"]
+        F1["• Extract high-value subgraphs<br/>• Focus on relevant patterns<br/>• Apply multi-criteria filtering"]
+        G1["• Synthesize findings into narrative<br/>• Annotate claims with node IDs<br/>• Provide comprehensive citations"]
+        H1["• Comprehensive quality audit<br/>• Bias and gap analysis<br/>• Final confidence assessment"]
+    end
+    
+    A -.-> A1
+    B -.-> B1
+    C -.-> C1
+    D -.-> D1
+    E -.-> E1
+    F -.-> F1
+    G -.-> G1
+    H -.-> H1
+    
+    classDef stageNode fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    classDef detailNode fill:#f5f5f5,stroke:#666,stroke-width:1px,color:#333
+    
+    class A,B,C,D,E,F,G,H stageNode
+    class A1,B1,C1,D1,E1,F1,G1,H1 detailNode
+```
+
 </div>
 
 The core reasoning process follows a sophisticated 8-stage pipeline:
 
 1. **🌱 Initialization**
-   - Creates root node from query
-   - Establishes initial graph structure
-   - Sets confidence baseline
+   - Creates root node from query with multi-dimensional confidence vector
+   - Establishes initial graph structure with proper metadata
+   - Sets baseline confidence across empirical, theoretical, methodological, and consensus dimensions
 
 2. **🧩 Decomposition**
-   - Breaks query into dimensions
-   - Identifies key components
-   - Creates dimensional nodes
+   - Breaks query into key dimensions: Scope, Objectives, Constraints, Data Needs, Use Cases
+   - Identifies potential biases and knowledge gaps from the outset
+   - Creates dimensional nodes with initial confidence assessments
 
 3. **🔬 Hypothesis/Planning**
-   - Generates multiple hypotheses
-   - Creates reasoning strategy
-   - Establishes falsification criteria
+   - Generates 3-5 hypotheses per dimension with explicit falsification criteria
+   - Creates detailed execution plans for each hypothesis
+   - Tags with disciplinary provenance and impact estimates
 
 4. **📊 Evidence Integration**
-   - Gathers supporting evidence
-   - Links evidence to hypotheses
-   - Updates confidence scores
+   - Iteratively selects hypotheses based on confidence-to-cost ratio and impact
+   - Gathers and links evidence using typed edges (causal, temporal, correlative)
+   - Updates confidence vectors using Bayesian methods with statistical power assessment
 
 5. **✂️ Pruning/Merging**
-   - Removes low-value elements
-   - Consolidates similar nodes
-   - Optimizes graph structure
+   - Removes nodes with low confidence and impact scores
+   - Consolidates semantically similar nodes
+   - Optimizes graph structure while preserving critical relationships
 
 6. **🔍 Subgraph Extraction**
-   - Identifies relevant portions
-   - Focuses on high-value paths
-   - Creates targeted subgraphs
+   - Identifies high-value subgraphs based on multiple criteria
+   - Focuses on nodes with high confidence and impact scores
+   - Extracts patterns relevant to the original query
 
 7. **📝 Composition**
-   - Synthesizes key findings
-   - Creates coherent insights
-   - Generates comprehensive answer
+   - Synthesizes findings into coherent narrative
+   - Annotates claims with node IDs and edge types
+   - Provides comprehensive answers with proper citations
 
 8. **🤔 Reflection**
-   - Evaluates reasoning quality
-   - Identifies improvement areas
-   - Final confidence assessment
+   - Performs comprehensive quality audit
+   - Evaluates coverage, bias detection, and methodological rigor
+   - Provides final confidence assessment and improvement recommendations
 
-### Technical Capabilities
+### Advanced Technical Capabilities
 
 <div align="center">
   <table>
@@ -99,20 +148,24 @@ The core reasoning process follows a sophisticated 8-stage pipeline:
       <td align="center">⚙️ <b>Configuration<br>Management</b></td>
       <td align="center">🔒 <b>Type<br>Safety</b></td>
     </tr>
+    <tr>
+      <td align="center">🌐 <b>Interdisciplinary<br>Bridge Nodes</b></td>
+      <td align="center">🔗 <b>Hyperedge<br>Support</b></td>
+      <td align="center">📊 <b>Statistical<br>Power Analysis</b></td>
+      <td align="center">🎯 <b>Impact<br>Estimation</b></td>
+    </tr>
   </table>
 </div>
 
-- **🧠 Graph Knowledge Representation**: Uses `networkx` to model complex relationships
-- **🔄 Dynamic Confidence Vectors**:
-  - Empirical support
-  - Theoretical basis
-  - Methodological rigor
-  - Consensus alignment
-- **🔌 MCP Server**: Seamless Claude Desktop integration
-- **⚡ High-Performance API**: Modern FastAPI implementation
-- **🐳 Easy Deployment**: Docker & Docker Compose support
-- **🧩 Extensible Architecture**: Modular components for customization
-- **⚙️ Flexible Configuration**: Pydantic & YAML configuration
+**Core Features:**
+- **🧠 Graph Knowledge Representation**: Uses `networkx` to model complex relationships with hyperedges and multi-layer networks
+- **🔄 Dynamic Confidence Vectors**: Four-dimensional confidence assessment (empirical support, theoretical basis, methodological rigor, consensus alignment)
+- **🌐 Interdisciplinary Bridge Nodes**: Automatically connects insights across different research domains
+- **🔗 Advanced Edge Types**: Supports causal, temporal, correlative, and custom relationship types
+- **📊 Statistical Rigor**: Integrated power analysis and effect size estimation
+- **🎯 Impact-Driven Prioritization**: Focuses on high-impact research directions
+- **🔌 MCP Server**: Seamless Claude Desktop integration with Model Context Protocol
+- **⚡ High-Performance API**: Modern FastAPI implementation with async support
 
 ## 🛠️ Technology Stack
 
@@ -136,33 +189,101 @@ The core reasoning process follows a sophisticated 8-stage pipeline:
 ## 📂 Project Structure
 
 ```
-asr-got-reimagined/
-├── config/                        
-│   ├── settings.yaml              
-│   └── claude_mcp_config.json     
-├── src/asr_got_reimagined/        
-│   ├── api/                       
-│   │   ├── routes/                
-│   │   │   └── mcp.py             
-│   │   └── schemas.py             
-│   ├── domain/                    
-│   │   ├── models/                
-│   │   │   ├── common.py          
-│   │   │   ├── graph_elements.py  
-│   │   │   └── graph_state.py     
-│   │   ├── services/              
-│   │   │   └── got_processor.py   
-│   │   ├── stages/                
-│   │   │   ├── base_stage.py      
-│   │   │   ├── stage_1_*.py       
-│   │   │   └── stage_2_*.py...    
-│   │   └── utils/                 
-│   ├── main.py                    
-│   └── app_setup.py               
-├── scripts/                       
-├── Dockerfile                     
-├── docker-compose.yml             
-└── pyproject.toml                 
+NexusMind/
+├── 📁 config/                             # Configuration files
+│   ├── settings.yaml                      # Application settings
+│   ├── claude_mcp_config.json            # Claude MCP integration config
+│   └── logging.yaml                       # Logging configuration
+│
+├── 📁 src/asr_got_reimagined/            # Main source code
+│   ├── 📁 api/                           # API layer
+│   │   ├── 📁 routes/                    # API route definitions
+│   │   │   ├── mcp.py                    # MCP protocol endpoints
+│   │   │   ├── health.py                 # Health check endpoints
+│   │   │   └── graph.py                  # Graph query endpoints
+│   │   ├── schemas.py                    # API request/response schemas
+│   │   └── middleware.py                 # API middleware
+│   │
+│   ├── 📁 domain/                        # Core business logic
+│   │   ├── 📁 models/                    # Domain models
+│   │   │   ├── common.py                 # Common types and enums
+│   │   │   ├── graph_elements.py         # Node, Edge, Hyperedge models
+│   │   │   ├── graph_state.py            # Graph state management
+│   │   │   ├── confidence.py             # Confidence vector models
+│   │   │   └── metadata.py               # Metadata schemas
+│   │   │
+│   │   ├── 📁 services/                  # Business services
+│   │   │   ├── got_processor.py          # Main GoT processing service
+│   │   │   ├── evidence_service.py       # Evidence gathering and assessment
+│   │   │   ├── confidence_service.py     # Confidence calculation service
+│   │   │   ├── graph_service.py          # Graph manipulation service
+│   │   │   └── mcp_service.py            # MCP protocol service
+│   │   │
+│   │   ├── 📁 stages/                    # 8-Stage pipeline implementation
+│   │   │   ├── base_stage.py             # Abstract base stage
+│   │   │   ├── stage_1_initialization.py # Stage 1: Graph initialization
+│   │   │   ├── stage_2_decomposition.py  # Stage 2: Query decomposition
+│   │   │   ├── stage_3_hypothesis.py     # Stage 3: Hypothesis generation
+│   │   │   ├── stage_4_evidence.py       # Stage 4: Evidence integration
+│   │   │   ├── stage_5_pruning.py        # Stage 5: Pruning and merging
+│   │   │   ├── stage_6_extraction.py     # Stage 6: Subgraph extraction
+│   │   │   ├── stage_7_composition.py    # Stage 7: Answer composition
+│   │   │   └── stage_8_reflection.py     # Stage 8: Quality reflection
+│   │   │
+│   │   └── 📁 utils/                     # Utility functions
+│   │       ├── graph_utils.py            # Graph manipulation utilities
+│   │       ├── confidence_utils.py       # Confidence calculation utilities
+│   │       ├── statistical_utils.py      # Statistical analysis utilities
+│   │       ├── bias_detection.py         # Bias detection algorithms
+│   │       └── temporal_analysis.py      # Temporal pattern analysis
+│   │
+│   ├── 📁 infrastructure/                # Infrastructure layer
+│   │   ├── 📁 database/                  # Database integration
+│   │   ├── 📁 cache/                     # Caching layer
+│   │   └── 📁 external/                  # External service integrations
+│   │
+│   ├── main.py                           # Application entry point
+│   └── app_setup.py                      # Application setup and configuration
+│
+├── 📁 tests/                             # Test suite
+│   ├── 📁 unit/                          # Unit tests
+│   │   ├── 📁 stages/                    # Stage-specific tests
+│   │   ├── 📁 services/                  # Service tests
+│   │   └── 📁 models/                    # Model tests
+│   ├── 📁 integration/                   # Integration tests
+│   └── 📁 fixtures/                      # Test fixtures and data
+│
+├── 📁 scripts/                           # Utility scripts
+│   ├── setup_dev.py                      # Development setup
+│   ├── add_type_hints.py                 # Type hint utilities
+│   └── deployment/                       # Deployment scripts
+│
+├── 📁 docs/                              # Documentation
+│   ├── api/                              # API documentation
+│   ├── architecture/                     # Architecture diagrams
+│   └── examples/                         # Usage examples
+│
+├── 📁 static/                            # Static assets
+│   └── nexusmind-logo.png               # Application logo
+│
+├── 📄 Docker Files & Config
+├── Dockerfile                            # Docker container definition
+├── docker-compose.yml                   # Multi-container setup
+├── .dockerignore                         # Docker ignore patterns
+│
+├── 📄 Configuration Files
+├── pyproject.toml                        # Python project configuration
+├── poetry.lock                           # Dependency lock file
+├── mypy.ini                              # Type checking configuration
+├── pyrightconfig.json                    # Python type checker config
+├── .pre-commit-config.yaml              # Pre-commit hooks
+├── .gitignore                            # Git ignore patterns
+│
+└── 📄 Documentation
+    ├── README.md                         # This file
+    ├── CHANGELOG.md                      # Version history
+    ├── LICENSE                           # Apache 2.0 license
+    └── CONTRIBUTING.md                   # Contribution guidelines
 ```
 
 ## 🚀 Getting Started
@@ -193,10 +314,23 @@ asr-got-reimagined/
    ```
 
 4. **Configure the application**:
-   - Adjust settings in `config/settings.yaml` as needed
-   - Configure environment variables or a `.env` file for sensitive information
+   ```bash
+   # Copy example configuration
+   cp config/settings.example.yaml config/settings.yaml
+   
+   # Edit configuration as needed
+   vim config/settings.yaml
+   ```
 
-5. **Run the development server**:
+5. **Set up environment variables** (optional):
+   ```bash
+   # Create .env file for sensitive configuration
+   echo "LOG_LEVEL=DEBUG" > .env
+   echo "API_HOST=0.0.0.0" >> .env
+   echo "API_PORT=8000" >> .env
+   ```
+
+6. **Run the development server**:
    ```bash
    python src/asr_got_reimagined/main.py
    ```
@@ -210,48 +344,129 @@ asr-got-reimagined/
 
 ### Docker Deployment
 
-<div align="center">
-  <img src="https://mermaid.ink/img/pako:eNptks1uwjAMx1_FyglQaAjYbmXqgcPGpk2bog1xaWLXmibOlLhQNeW9Z5C2AuWQyPb_Z8ef5B2VXiKvxD1KfMfDw4wNGyWZqqywIH1R4X6y6Gaj5SN4TorF0j_qyNXOJvlm9FLp4CyJA5DxXDcmzrYmFHhNnHpML0_Yo9fzmmI0Ojnrr1AHn-wNdB_VB89_nj6ez5qNohb8I3Gla3ZmbuVdP2LOeI_Df54ttWQtfuG6h21wj-xcaNfRP41wG2fr5Qa8zdn6o89GRb_5nmR8_RC6VrJHUdSTzJXRLBHodCGurhSTJu6mRCmneZlG6WyVJpNxnrH7aclub5dhGK_ydDrJ43zCTscylUn--hfwPK_APAsGGcj2AG7J-0l8Bgc5bYjkU2jO1rRruBhtKLgxP2jRguKMuabZ_ohUsq2hf3FXw3xEv3ic4n4XUD_Tan-7GhQK6fFSuCeD0hTSKAykFEdSjoXKmZSIzbnCfKcc7V9zfX5-pbm41Z-kdTVLXA?type=png" width="500" height="300"/>
-</div>
+```mermaid
+graph TB
+    subgraph "Development Environment"
+        A[👨‍💻 Developer] --> B[🐳 Docker Compose]
+    end
+    
+    subgraph "Container Orchestration"
+        B --> C[📦 NexusMind Container]
+        B --> D[📊 Monitoring Container]
+        B --> E[🗄️ Database Container]
+    end
+    
+    subgraph "NexusMind Application"
+        C --> F[⚡ FastAPI Server]
+        F --> G[🧠 ASR-GoT Engine]
+        F --> H[🔌 MCP Protocol]
+    end
+    
+    subgraph "External Integrations"
+        H --> I[🤖 Claude Desktop]
+        H --> J[🔗 Other AI Clients]
+    end
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style F fill:#fff3e0
+    style G fill:#ffebee
+    style H fill:#f1f8e9
+```
 
-1. **Build and run the Docker containers**:
+1. **Quick Start with Docker Compose**:
    ```bash
+   # Build and run all services
    docker-compose up --build
-   ```
    
-   For detached mode:
-   ```bash
+   # For detached mode (background)
    docker-compose up --build -d
-   ```
    
-   The Docker image uses Python 3.13.3-slim-bookworm as the base image for improved performance and security.
+   # View logs
+   docker-compose logs -f nexusmind
+   ```
 
-2. **Access the API**:
-   The API will be accessible at `http://localhost:8000` (or as configured in `docker-compose.yml`).
+2. **Individual Docker Container**:
+   ```bash
+   # Build the image
+   docker build -t nexusmind:latest .
+   
+   # Run the container
+   docker run -p 8000:8000 -v $(pwd)/config:/app/config nexusmind:latest
+   ```
+
+3. **Production Deployment**:
+   ```bash
+   # Use production compose file
+   docker-compose -f docker-compose.prod.yml up --build -d
+   ```
+
+4. **Access the Services**:
+   - **API Documentation**: `http://localhost:8000/docs`
+   - **Health Check**: `http://localhost:8000/health`
+   - **MCP Endpoint**: `http://localhost:8000/mcp`
 
 ## 🔌 API Endpoints
 
 ### Core Endpoints
 
-- **MCP Endpoint**: `POST /mcp`
-  - For communication with MCP clients like Claude Desktop
-  - Implements the Model Context Protocol for AI interaction
+- **MCP Protocol**: `POST /mcp`
+  ```json
+  {
+    "method": "process_query",
+    "params": {
+      "query": "Analyze the relationship between microbiome diversity and cancer progression",
+      "confidence_threshold": 0.7,
+      "max_stages": 8
+    }
+  }
+  ```
 
 - **Health Check**: `GET /health`
-  - Basic health check for monitoring and service discovery
+  ```json
+  {
+    "status": "healthy",
+    "version": "0.1.0",
+    "timestamp": "2024-05-23T10:30:00Z"
+  }
+  ```
 
-### Additional Endpoints (Planned)
+### Advanced Endpoints
 
-- **Graph Query**: `POST /api/graph/query`
-  - Direct interface for ASR-GoT queries
-  
-- **Graph State**: `GET /api/graph/{session_id}`
+- **Graph Query**: `POST /api/v1/graph/query`
+  ```json
+  {
+    "query": "Research question or hypothesis",
+    "parameters": {
+      "disciplines": ["immunology", "oncology"],
+      "confidence_threshold": 0.6,
+      "include_temporal_analysis": true,
+      "enable_bias_detection": true
+    }
+  }
+  ```
+
+- **Graph State**: `GET /api/v1/graph/{session_id}`
   - Retrieve current state of a reasoning graph
+  - Includes confidence scores, node relationships, and metadata
 
-- **Analytics**: `GET /api/analytics/{session_id}`
-  - Get metrics about the reasoning process
+- **Analytics**: `GET /api/v1/analytics/{session_id}`
+  - Get comprehensive metrics about the reasoning process
+  - Includes performance stats, confidence trends, and quality measures
 
-## 🧪 Testing & Quality
+- **Subgraph Extraction**: `POST /api/v1/graph/{session_id}/extract`
+  ```json
+  {
+    "criteria": {
+      "min_confidence": 0.7,
+      "node_types": ["hypothesis", "evidence"],
+      "include_causal_chains": true
+    }
+  }
+  ```
+
+## 🧪 Testing & Quality Assurance
 
 <div align="center">
   <table>
@@ -259,11 +474,12 @@ asr-got-reimagined/
       <td align="center">🧪<br><b>Testing</b></td>
       <td align="center">🔍<br><b>Type Checking</b></td>
       <td align="center">✨<br><b>Linting</b></td>
+      <td align="center">📊<br><b>Coverage</b></td>
     </tr>
     <tr>
       <td align="center">
         <pre>poetry run pytest</pre>
-        <pre>poetry run pytest --cov=src</pre>
+        <pre>poetry run pytest -v</pre>
       </td>
       <td align="center">
         <pre>poetry run mypy src/</pre>
@@ -273,17 +489,142 @@ asr-got-reimagined/
         <pre>poetry run ruff check .</pre>
         <pre>poetry run ruff format .</pre>
       </td>
+      <td align="center">
+        <pre>poetry run pytest --cov=src</pre>
+        <pre>coverage html</pre>
+      </td>
     </tr>
   </table>
 </div>
 
-### Development Tools
+### Development Commands
+
+```bash
+# Run full test suite with coverage
+poetry run pytest --cov=src --cov-report=html --cov-report=term
+
+# Run specific test categories
+poetry run pytest tests/unit/stages/          # Stage-specific tests
+poetry run pytest tests/integration/         # Integration tests
+poetry run pytest -k "test_confidence"       # Tests matching pattern
+
+# Type checking and linting
+poetry run mypy src/ --strict                # Strict type checking
+poetry run ruff check . --fix                # Auto-fix linting issues
+poetry run ruff format .                     # Format code
+
+# Pre-commit hooks (recommended)
+poetry run pre-commit install                # Install hooks
+poetry run pre-commit run --all-files       # Run all hooks
+```
+
+### Quality Metrics
 
 - **Type Safety**: 
+  - Fully typed codebase with strict mypy configuration
   - Configured with `mypy.ini` and `pyrightconfig.json`
-  - Fix logger type issues with `python scripts/add_type_hints.py`
+  - Fix logger type issues: `python scripts/add_type_hints.py`
 
 - **Code Quality**:
-  - Fully typed codebase with type annotations
-  - Pre-commit hooks available: `poetry run pre-commit install`
+  - 95%+ test coverage target
   - Automated formatting with Ruff
+  - Pre-commit hooks for consistent code quality
+  - Comprehensive integration tests for the 8-stage pipeline
+
+## 🔧 Configuration
+
+### Application Settings (`config/settings.yaml`)
+
+```yaml
+# Core application settings
+app:
+  name: "NexusMind"
+  version: "0.1.0"
+  debug: false
+  log_level: "INFO"
+
+# API configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  cors_origins: ["*"]
+  
+# ASR-GoT Framework settings
+asr_got:
+  max_stages: 8
+  default_confidence_threshold: 0.6
+  enable_bias_detection: true
+  enable_temporal_analysis: true
+  max_hypotheses_per_dimension: 5
+  
+# Graph settings
+graph:
+  max_nodes: 10000
+  enable_hyperedges: true
+  enable_multi_layer: true
+  temporal_decay_factor: 0.1
+```
+
+### MCP Configuration (`config/claude_mcp_config.json`)
+
+```json
+{
+  "name": "nexusmind",
+  "description": "Advanced Scientific Reasoning with Graph-of-Thoughts",
+  "version": "0.1.0",
+  "endpoints": {
+    "mcp": "http://localhost:8000/mcp"
+  },
+  "capabilities": [
+    "scientific_reasoning",
+    "graph_analysis",
+    "confidence_assessment",
+    "bias_detection"
+  ]
+}
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### Development Setup
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Install development dependencies: `poetry install --with dev`
+4. Make your changes and add tests
+5. Run the test suite: `poetry run pytest`
+6. Submit a pull request
+
+### Code Style
+
+- Follow PEP 8 style guidelines
+- Use type hints for all functions and methods
+- Write comprehensive docstrings
+- Maintain test coverage above 95%
+
+## 📚 Documentation
+
+- **[API Documentation](docs/api/)**: Comprehensive API reference
+- **[Architecture Guide](docs/architecture/)**: System design and components
+- **[Usage Examples](docs/examples/)**: Practical usage scenarios
+- **[Development Guide](docs/development/)**: Contributing and development setup
+
+## 📄 License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **NetworkX** community for graph analysis capabilities
+- **FastAPI** team for the excellent web framework
+- **Pydantic** for robust data validation
+- The scientific research community for inspiration and feedback
+
+---
+
+<div align="center">
+  <p><strong>Built with ❤️ for the scientific research community</strong></p>
+  <p><em>NexusMind - Advancing scientific reasoning through intelligent graph structures</em></p>
+</div>
