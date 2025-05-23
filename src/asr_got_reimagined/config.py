@@ -86,7 +86,7 @@ class AppSettings(BaseModel):
     name: str = Field(default="NexusMind")
     version: str = Field(default="0.1.0")
     host: str = Field(default="0.0.0.0")
-    port: int = Field(default=8000)
+    port: int = Field(default=8000)  # Can be overridden by APP__PORT environment variable
     log_level: str = Field(default="INFO")
     # debug: bool = False
 
