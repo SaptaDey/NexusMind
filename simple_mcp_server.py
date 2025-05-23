@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request, HTTPException
 import uvicorn
+import os  # Import os module
 from pydantic import BaseModel, ValidationError
 from typing import Dict, Any, Optional, List, Union
 import json
@@ -119,4 +120,12 @@ async def health_check():
 
 if __name__ == "__main__":
     logger.info("Starting NexusMind MCP Server...")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Determine port from environment variable or default to 8000
+    port_str = os.environ.get("PORT")
+    server_port = 8000  # Default port
+    if port_str and port_str.isdigit():
+        server_port = int(port_str)
+    else:
+        logger.info(f"PORT environment variable not set or invalid, defaulting to {server_port}")
+    
+    uvicorn.run(app, host="0.0.0.0", port=server_port)
