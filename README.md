@@ -47,48 +47,34 @@ NexusMind leverages **graph structures** to perform sophisticated scientific rea
 
 ### 8-Stage Reasoning Pipeline
 
-<div align="center">
-
 ```mermaid
-graph TB
-    subgraph "🧠 NexusMind ASR-GoT Pipeline"
-        A["🌱 Stage 1<br/>Initialization"] --> B["🧩 Stage 2<br/>Decomposition"]
-        B --> C["🔬 Stage 3<br/>Hypothesis/Planning"]
-        C --> D["📊 Stage 4<br/>Evidence Integration"]
-        D --> E["✂️ Stage 5<br/>Pruning/Merging"]
-        E --> F["🔍 Stage 6<br/>Subgraph Extraction"]
-        F --> G["📝 Stage 7<br/>Composition"]
-        G --> H["🤔 Stage 8<br/>Reflection"]
-    end
+graph TD
+    A[🌱 Stage 1: Initialization] --> B[🧩 Stage 2: Decomposition]
+    B --> C[🔬 Stage 3: Hypothesis/Planning]
+    C --> D[📊 Stage 4: Evidence Integration]
+    D --> E[✂️ Stage 5: Pruning/Merging]
+    E --> F[🔍 Stage 6: Subgraph Extraction]
+    F --> G[📝 Stage 7: Composition]
+    G --> H[🤔 Stage 8: Reflection]
     
-    subgraph "Stage Details"
-        A1["• Create root node with confidence vector<br/>• Set initial graph structure<br/>• Define metadata schema"]
-        B1["• Break query into dimensions<br/>• Identify scope, objectives, constraints<br/>• Detect potential biases early"]
-        C1["• Generate 3-5 hypotheses per dimension<br/>• Create falsification criteria<br/>• Plan evidence gathering strategy"]
-        D1["• Select hypotheses by confidence/impact ratio<br/>• Link evidence with typed edges<br/>• Update confidence via Bayesian methods"]
-        E1["• Remove low confidence/impact nodes<br/>• Merge semantically similar elements<br/>• Optimize graph topology"]
-        F1["• Extract high-value subgraphs<br/>• Focus on relevant patterns<br/>• Apply multi-criteria filtering"]
-        G1["• Synthesize findings into narrative<br/>• Annotate claims with node IDs<br/>• Provide comprehensive citations"]
-        H1["• Comprehensive quality audit<br/>• Bias and gap analysis<br/>• Final confidence assessment"]
-    end
+    A1[Create root node<br/>Set initial confidence<br/>Define graph structure] --> A
+    B1[Break into dimensions<br/>Identify components<br/>Create dimensional nodes] --> B
+    C1[Generate hypotheses<br/>Create reasoning strategy<br/>Set falsification criteria] --> C
+    D1[Gather evidence<br/>Link to hypotheses<br/>Update confidence scores] --> D
+    E1[Remove low-value elements<br/>Consolidate similar nodes<br/>Optimize structure] --> E
+    F1[Identify relevant portions<br/>Focus on high-value paths<br/>Create targeted subgraphs] --> F
+    G1[Synthesize findings<br/>Create coherent insights<br/>Generate comprehensive answer] --> G
+    H1[Evaluate reasoning quality<br/>Identify improvements<br/>Final confidence assessment] --> H
     
-    A -.-> A1
-    B -.-> B1
-    C -.-> C1
-    D -.-> D1
-    E -.-> E1
-    F -.-> F1
-    G -.-> G1
-    H -.-> H1
-    
-    classDef stageNode fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
-    classDef detailNode fill:#f5f5f5,stroke:#666,stroke-width:1px,color:#333
-    
-    class A,B,C,D,E,F,G,H stageNode
-    class A1,B1,C1,D1,E1,F1,G1,H1 detailNode
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+    style E fill:#ffebee
+    style F fill:#f1f8e9
+    style G fill:#e3f2fd
+    style H fill:#fce4ec
 ```
-
-</div>
 
 The core reasoning process follows a sophisticated 8-stage pipeline:
 
