@@ -48,9 +48,13 @@ NexusMind leverages **graph structures** to perform sophisticated scientific rea
 ### 8-Stage Reasoning Pipeline
 
 <div align="center">
-  <img src="https://www.mermaidchart.com/raw/1c206899-b2dc-443a-b46e-3866527a8044?theme=light&version=v0.1&format=svg" alt="8-Stage ASR-GoT Reasoning Pipeline" width="800"/>
-  
-  <p><em><a href="https://www.mermaidchart.com/app/projects/bc008258-295a-4f57-a176-0e0af609beb2/diagrams/1c206899-b2dc-443a-b46e-3866527a8044/version/v0.1/edit" target="_blank">🔗 Edit this diagram</a></em></p>
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://www.mermaidchart.com/raw/1c206899-b2dc-443a-b46e-3866527a8044?theme=light&version=v0.1&format=svg" alt="8-Stage ASR-GoT Reasoning Pipeline" width="100%"/>
+      </td>
+    </tr>
+  </table>
 </div>
 
 The core reasoning process follows a sophisticated 8-stage pipeline:
