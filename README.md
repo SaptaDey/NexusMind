@@ -47,15 +47,34 @@ NexusMind leverages **graph structures** to perform sophisticated scientific rea
 
 ### 8-Stage Reasoning Pipeline
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://www.mermaidchart.com/raw/1c206899-b2dc-443a-b46e-3866527a8044?theme=light&version=v0.1&format=svg" alt="8-Stage ASR-GoT Reasoning Pipeline" width="100%"/>
-      </td>
-    </tr>
-  </table>
-</div>
+```mermaid
+graph TD
+    A[🌱 Stage 1: Initialization] --> B[🧩 Stage 2: Decomposition]
+    B --> C[🔬 Stage 3: Hypothesis/Planning]
+    C --> D[📊 Stage 4: Evidence Integration]
+    D --> E[✂️ Stage 5: Pruning/Merging]
+    E --> F[🔍 Stage 6: Subgraph Extraction]
+    F --> G[📝 Stage 7: Composition]
+    G --> H[🤔 Stage 8: Reflection]
+    
+    A1[Create root node<br/>Set initial confidence<br/>Define graph structure] --> A
+    B1[Break into dimensions<br/>Identify components<br/>Create dimensional nodes] --> B
+    C1[Generate hypotheses<br/>Create reasoning strategy<br/>Set falsification criteria] --> C
+    D1[Gather evidence<br/>Link to hypotheses<br/>Update confidence scores] --> D
+    E1[Remove low-value elements<br/>Consolidate similar nodes<br/>Optimize structure] --> E
+    F1[Identify relevant portions<br/>Focus on high-value paths<br/>Create targeted subgraphs] --> F
+    G1[Synthesize findings<br/>Create coherent insights<br/>Generate comprehensive answer] --> G
+    H1[Evaluate reasoning quality<br/>Identify improvements<br/>Final confidence assessment] --> H
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+    style E fill:#ffebee
+    style F fill:#f1f8e9
+    style G fill:#e3f2fd
+    style H fill:#fce4ec
+```
 
 The core reasoning process follows a sophisticated 8-stage pipeline:
 
