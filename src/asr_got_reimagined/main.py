@@ -7,7 +7,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 from src.asr_got_reimagined.app_setup import create_app
-from src.asr_got_reimagined.simple_config import settings
+from src.asr_got_reimagined.config import settings
 
 app = create_app()
 
